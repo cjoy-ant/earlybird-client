@@ -1,0 +1,14 @@
+.About {
+  margin-top: 1rem;
+}
+
+h2 {
+  text-align: center;
+  font-weight: normal;
+}
+
+.About__description {
+  background: #efefef;
+  margin: 0 2rem 0 2rem;
+  padding: 2rem;
+}
