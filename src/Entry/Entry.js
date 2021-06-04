@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import STORE from "../STORE";
 import "./Entry.css";
 
 export default class Entry extends React.Component {
   render() {
     const {
+      entry_id,
       entry_book_id,
       entry_title,
       entry_category,
@@ -47,7 +49,9 @@ export default class Entry extends React.Component {
 
     return (
       <div className="Entry">
-        <h3>{entry_title}</h3>
+        <h3>
+          <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
+        </h3>
         <p>
           <span className="large bold">{findBook()}</span> |{" "}
           <span className="italic">{entry_category}</span>
