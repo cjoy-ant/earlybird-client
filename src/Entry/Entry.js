@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import STORE from "../STORE";
+import Context from "../Context";
 import "./Entry.css";
 
 export default class Entry extends React.Component {
+  static contextType = Context;
+
   render() {
     const {
       entry_id,
@@ -12,12 +14,15 @@ export default class Entry extends React.Component {
       entry_category,
       entry_chapters,
       entry_pages,
-      entry_content,
+      entry_quote,
+      entry_notes,
       entry_date_modified,
     } = this.props;
 
     const findBook = () => {
-      const book = STORE.books.filter((book) => book.book_id === entry_book_id);
+      const book = this.context.books.filter(
+        (book) => book.book_id === entry_book_id
+      );
       return book[0].book_title;
     };
 
@@ -47,6 +52,32 @@ export default class Entry extends React.Component {
       }
     };
 
+    const isQuote = () => {
+      if (entry_quote === "") {
+        return;
+      } else {
+        return (
+          <>
+            <span className="bold">Quote:</span> {entry_quote}
+            <br />
+          </>
+        );
+      }
+    };
+
+    const isNotes = () => {
+      if (entry_notes === "") {
+        return;
+      } else {
+        return (
+          <>
+            <span className="bold">Notes:</span> {entry_notes}
+            <br />
+          </>
+        );
+      }
+    };
+
     return (
       <div className="Entry">
         <h3>
@@ -59,9 +90,8 @@ export default class Entry extends React.Component {
           {isChapters()}
           {isPages()}
           <br />
-          <span className="bold">Your notes:</span>
-          <br />
-          {entry_content}
+          {isQuote()}
+          {isNotes()}
           <br />
           <br />
           <span className="bold small">Last updated:</span>{" "}

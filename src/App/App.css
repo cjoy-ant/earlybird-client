@@ -13,12 +13,25 @@ a:hover {
   cursor: pointer;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 /* FOOTER */
 footer {
+  position: fixed;
   bottom: 0;
   width: 100%;
   background: #6b6b6b;
-  padding: 0.25rem;
+  padding: 0.1rem;
   text-align: center;
   color: #ffffff;
+  font-size: 0.8rem;
+}
+
+/* FORMS */
+input,
+textarea,
+select {
+  font-family: Montserrat;
 }

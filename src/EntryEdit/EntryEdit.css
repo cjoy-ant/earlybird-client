@@ -1,0 +1,44 @@
+h2 {
+  font-weight: normal;
+}
+
+form {
+  background: #efefef;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+label {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#entry-title,
+#entry-category {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+#entry-chapters,
+#entry-pages {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 340px;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit__button-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.EntryEdit__button-container button {
+  margin-right: 1rem;
+}

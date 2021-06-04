@@ -1,3 +1,7 @@
+.EntryList {
+  margin-bottom: 2rem;
+}
+
 .EntryList__button-add {
   margin-left: 3.5rem;
 }

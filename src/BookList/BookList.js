@@ -1,12 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Book from "../Book/Book";
-import STORE from "../STORE";
+import Context from "../Context";
 import "./BookList.css";
 
 export default class BookList extends React.Component {
+  static contextType = Context;
+
   makeBookList = () => {
-    const bookList = STORE.books.map((book) => {
+    const sorted = this.context.books.sort((a, b) => {
+      return b.book_date_started - a.book_date_started;
+    });
+
+    const bookList = sorted.map((book) => {
       return (
         <li key={book.book_id}>
           <Book

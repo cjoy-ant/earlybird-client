@@ -5,9 +5,9 @@ const STORE = {
       book_title: "The Body Keeps the Score",
       book_author: "Bessel Van der Kolk MD",
       book_genre: "Self-Help",
-      book_date_started: "3-15-2021",
+      book_date_started: "3-15-2017",
       book_finished: false,
-      book_date_modified: "",
+      book_date_modified: "3-15-2021",
     },
     {
       book_id: "a05abb3a-c4a8-11eb-8529-0242ac130003",
@@ -16,7 +16,7 @@ const STORE = {
       book_genre: "Self-help",
       book_date_started: "01-30-2021",
       book_finished: true,
-      book_date_modified: "",
+      book_date_modified: "01-30-2021",
     },
     {
       book_id: "0d7c1700-c4a8-11eb-8529-0242ac130003",
@@ -25,7 +25,7 @@ const STORE = {
       book_genre: "Poetry",
       book_date_started: "08-20-2020",
       book_finished: true,
-      book_date_modified: "",
+      book_date_modified: "08-20-2020",
     },
     {
       book_id: "1038017a-c4a8-11eb-8529-0242ac130003",
@@ -34,7 +34,7 @@ const STORE = {
       book_genre: "Psychological Fiction",
       book_date_started: "12-10-2018",
       book_finished: true,
-      book_date_modified: "",
+      book_date_modified: "12-10-2018",
     },
   ],
   entries: [
@@ -45,8 +45,10 @@ const STORE = {
       entry_category: "Quote",
       entry_chapters: "3",
       entry_pages: "97",
-      entry_content: `"Traumatized people chronically feel unsafe inside their bodies: The past is alive in the form of gnawing interior discomfort. Their bodies are constantly bombarded by visceral warning signs, and, in an attempt to control these processes, they often become expert at ignoring their gut feelings and in numbing awareness of what is played out inside. They learn to hide from their selves."`,
-      entry_date_modified: "03-20-2021",
+      entry_quote:
+        "Traumatized people chronically feel unsafe inside their bodies: The past is alive in the form of gnawing interior discomfort. Their bodies are constantly bombarded by visceral warning signs, and, in an attempt to control these processes, they often become expert at ignoring their gut feelings and in numbing awareness of what is played out inside. They learn to hide from their selves.",
+      entry_notes: "",
+      entry_date_modified: "03-20-2017",
     },
     {
       entry_id: "cf71a32e-c4a9-11eb-8529-0242ac130003",
@@ -55,7 +57,8 @@ const STORE = {
       entry_category: "Notes",
       entry_chapters: "4",
       entry_pages: "30-40",
-      entry_content:
+      entry_quote: "",
+      entry_notes:
         "1. Clothing 2. Books 3. Papers 4. Komono (Miscellaneous) 5. Sentimental Items",
       entry_date_modified: "02-9-2021",
     },
@@ -66,8 +69,9 @@ const STORE = {
       entry_category: "Notes",
       entry_chapters: "2",
       entry_pages: "21-25",
-      entry_content:
+      entry_quote:
         "If an item doesn't spark joy, express your gratitude for what it was able to offer you, then let it go.",
+      entry_notes: "",
       entry_date_modified: "02-7-2021",
     },
     {
@@ -77,7 +81,9 @@ const STORE = {
       entry_category: "Quote",
       entry_chapters: "2",
       entry_pages: "24",
-      entry_content: `"other women's bodies are not our battlegrounds" Why do men make decisions regarding women's health and our bodies???`,
+      entry_quote: "other women's bodies are not our battlegrounds",
+      entry_notes:
+        "Why do men make decisions regarding women's health and our bodies???",
       entry_date_modified: "08-21-2020",
     },
     {
@@ -87,7 +93,8 @@ const STORE = {
       entry_category: "Quote",
       entry_chapters: "6",
       entry_pages: "110",
-      entry_content: `"Here's what I think, Mr. Wind-Up Bird," said May Kasahara. "Everybody's born with some different thing at the core of their existence. And that thing, whatever it is, becomes like a heat source that runs each person from the inside. I have one too, of course. Like everybody else. But sometimes it gets out of hand. It swells or shrinks inside me, and it shakes me up. What I'd really like to do is find a way to communicate that feeling to another person. But I can't seem to do it. They just don't get it. Of course, the problem could be that I'm not explaining it very well, but I think it's because they're not listening very well. They pretend to be listening, but they're not, really. So I get worked up sometimes, and I do some crazy things."`,
+      entry_quote: `"Here's what I think, Mr. Wind-Up Bird," said May Kasahara. "Everybody's born with some different thing at the core of their existence. And that thing, whatever it is, becomes like a heat source that runs each person from the inside. I have one too, of course. Like everybody else. But sometimes it gets out of hand. It swells or shrinks inside me, and it shakes me up. What I'd really like to do is find a way to communicate that feeling to another person. But I can't seem to do it. They just don't get it. Of course, the problem could be that I'm not explaining it very well, but I think it's because they're not listening very well. They pretend to be listening, but they're not, really. So I get worked up sometimes, and I do some crazy things."`,
+      entry_notes: "I love how introsepctive this young girl is.",
       entry_date_modified: "12-21-2018",
     },
   ],
