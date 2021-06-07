@@ -33,6 +33,8 @@ export default class ReviewEdit extends React.Component {
       review_notes: review.review_notes,
       review_recommend: review.review_recommend,
     });
+
+    console.log(review.review_recommend);
   }
 
   handleChangeRating = (e) => {
@@ -66,8 +68,16 @@ export default class ReviewEdit extends React.Component {
   };
 
   handleChangeRecommend = (e) => {
+    const yes_no = () => {
+      if (e.target.value === "yes") {
+        return true;
+      }
+      if (e.target.value === "no") {
+        return false;
+      }
+    };
     this.setState({
-      review_recommend: e.target.value,
+      review_recommend: yes_no(),
     });
   };
 
@@ -200,9 +210,9 @@ export default class ReviewEdit extends React.Component {
             name="yes_no"
             id="recommend_yes"
             aria-label="yes"
-            value="true"
+            value="yes"
             checked={recommendYes()}
-            onSelect={this.handleChangeRecommend}
+            onChange={this.handleChangeRecommend}
             required
           />
           <label htmlFor="recommend_yes">Yes</label>
@@ -211,9 +221,9 @@ export default class ReviewEdit extends React.Component {
             name="yes_no"
             id="recommend_no"
             aria-label="no"
-            value="false"
+            value="no"
             checked={recommendNo()}
-            onSelect={this.handleChangeRecommend}
+            onChange={this.handleChangeRecommend}
             required
           />
           <label htmlFor="recommendno">No</label>

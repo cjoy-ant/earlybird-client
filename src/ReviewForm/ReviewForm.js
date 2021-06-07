@@ -7,12 +7,12 @@ export default class ReviewForm extends React.Component {
   state = {
     review_id: "",
     review_book_id: "",
-    review_rating: "",
+    review_rating: "0",
     review_favorite: "",
     review_dislike: "",
     review_takeaway: "",
     review_notes: "",
-    review_recommend: "",
+    review_recommend: true,
   };
 
   static contextType = Context;
@@ -55,8 +55,16 @@ export default class ReviewForm extends React.Component {
   };
 
   handleChangeRecommend = (e) => {
+    const yes_no = () => {
+      if (e.target.value === "yes") {
+        return true;
+      }
+      if (e.target.value === "no") {
+        return false;
+      }
+    };
     this.setState({
-      review_recommend: e.target.value,
+      review_recommend: yes_no(),
     });
   };
 
@@ -151,8 +159,8 @@ export default class ReviewForm extends React.Component {
             name="yes_no"
             id="recommend_yes"
             aria-label="yes"
-            value="true"
-            onSelect={this.handleChangeRecommend}
+            value="yes"
+            onChange={this.handleChangeRecommend}
             required
           />
           <label htmlFor="recommend_yes">Yes</label>
@@ -161,8 +169,8 @@ export default class ReviewForm extends React.Component {
             name="yes_no"
             id="recommend_no"
             aria-label="no"
-            value="false"
-            onSelect={this.handleChangeRecommend}
+            value="no"
+            onChange={this.handleChangeRecommend}
             required
           />
           <label htmlFor="recommendno">No</label>
