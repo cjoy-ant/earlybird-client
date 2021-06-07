@@ -33,8 +33,6 @@ export default class ReviewEdit extends React.Component {
       review_notes: review.review_notes,
       review_recommend: review.review_recommend,
     });
-
-    console.log(review.review_recommend);
   }
 
   handleChangeRating = (e) => {
@@ -105,8 +103,8 @@ export default class ReviewEdit extends React.Component {
 
   render() {
     const {
-      review_id,
-      review_book_id,
+      // review_id,
+      // review_book_id,
       review_rating,
       review_favorite,
       review_dislike,

@@ -12,7 +12,7 @@ export default class ReviewForm extends React.Component {
     review_dislike: "",
     review_takeaway: "",
     review_notes: "",
-    review_recommend: true,
+    review_recommend: "",
   };
 
   static contextType = Context;

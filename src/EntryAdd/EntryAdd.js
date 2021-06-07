@@ -75,18 +75,7 @@ export default class EntryAdd extends React.Component {
         </option>
       );
     });
-    return (
-      <select
-        id="entry_book_id__list"
-        aria-label="book"
-        onChange={this.handleChangeBook}
-      >
-        <option key="0" value="">
-          Select a book...
-        </option>
-        {bookDropDownList}
-      </select>
-    );
+    return bookDropDownList;
   };
 
   validateBook = (e) => {
@@ -114,7 +103,17 @@ export default class EntryAdd extends React.Component {
           />
           <br />
           <label htmlFor="entry_book_id_list">Book:</label>
-          {this.makeBookDropDownList()}
+          <select
+            id="entry_book_id__list"
+            aria-label="book"
+            onChange={this.handleChangeBook}
+          >
+            <option key="0" value="">
+              Select a book...
+            </option>
+            {this.makeBookDropDownList()}
+          </select>
+          <br />
           <br />
 
           <label htmlFor="entry-category">Category:</label>

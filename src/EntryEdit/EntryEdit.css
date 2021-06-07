@@ -16,14 +16,15 @@
   margin-right: 5px;
 }
 
-#entry-title,
-#entry-category {
+.EntryEdit #entry-title,
+.EntryEdit #entry_book_id_list,
+.EntryEdit #entry-category {
   width: 300px;
   margin-bottom: 1rem;
 }
 
-#entry-chapters,
-#entry-pages {
+.EntryEdit #entry-chapters,
+.EntryEdit #entry-pages {
   width: 100px;
   margin-bottom: 1rem;
 }

@@ -46,18 +46,7 @@ export default class EntryEdit extends React.Component {
         </option>
       );
     });
-    return (
-      <select
-        id="entry_book_id__list"
-        aria-label="book"
-        onChange={this.handleChangeBook}
-      >
-        <option key="0" value="">
-          Select a book...
-        </option>
-        {bookDropDownList}
-      </select>
-    );
+    return bookDropDownList;
   };
 
   handleChangeTitle = (e) => {
@@ -142,6 +131,21 @@ export default class EntryEdit extends React.Component {
             defaultValue={entry.entry_title}
             onChange={this.handleChangeTitle}
           />
+          <br />
+
+          <label htmlFor="entry_book_id_list">Book:</label>
+          <select
+            id="entry_book_id__list"
+            aria-label="book"
+            defaultValue={entry.entry_book_id}
+            onChange={this.handleChangeBook}
+          >
+            <option key="0" value="">
+              Select a book...
+            </option>
+            {this.makeBookDropDownList()}
+          </select>
+          <br />
           <br />
 
           <label htmlFor="entry-category">Category:</label>
