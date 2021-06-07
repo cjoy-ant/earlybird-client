@@ -58,11 +58,11 @@ export default class BookEdit extends React.Component {
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
       book_finished: this.state.book_finished,
-      book_date_modified: new Date(),
+      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     this.context.editBook(updatedBook);
-    this.props.history.push("/books");
+    this.props.history.push(`/books/${updatedBook.book_id}`);
   };
 
   handleClickCancel = () => {

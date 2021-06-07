@@ -8,9 +8,9 @@ import "./Entry.css";
 export default class Entry extends React.Component {
   static contextType = Context;
 
-  state = {
-    book_title: "",
-  };
+  // state = {
+  //   book_title: "",
+  // };
 
   // componentDidMount() {
   //   const findBook = () => {
@@ -105,7 +105,7 @@ export default class Entry extends React.Component {
           <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
         </h3>
         <p>
-          <span className="large bold">{this.state.book_title}</span> |{" "}
+          {/* <span className="large bold">{this.state.book_title}</span> |{" "} */}
           <span className="italic">{entry_category}</span>
           <br />
           {isChapters()}

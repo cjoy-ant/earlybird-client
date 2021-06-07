@@ -99,11 +99,11 @@ export default class EntryEdit extends React.Component {
       entry_pages: this.state.entry_pages,
       entry_quote: this.state.entry_quote,
       entry_notes: this.state.entry_notes,
-      entry_date_modified: new Date(),
+      entry_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     this.context.editEntry(updatedEntry);
-    this.props.history.push("/entries");
+    this.props.history.push(`/entries/${updatedEntry.entry_id}`);
   };
 
   handleClickCancel = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+// import { format } from "date-fns";
+// import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
 import "./Review.css";
 
@@ -101,7 +101,8 @@ export default class Review extends React.Component {
         <h3>My Review</h3>
         <p>
           <span className="bold">Finished on:</span>{" "}
-          {format(utcToZonedTime(review_date_finished), "MMMM d, yyyy")}
+          {/* {format(utcToZonedTime(review_date_finished), "MMMM d, yyyy")} */}
+          {review_date_finished}
           <br />
           <span className="bold">Rating:</span> {review_rating}/10
           <br />

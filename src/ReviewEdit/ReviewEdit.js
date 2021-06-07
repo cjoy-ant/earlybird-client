@@ -13,6 +13,7 @@ export default class ReviewEdit extends React.Component {
     review_takeaway: "",
     review_notes: "",
     review_recommend: "",
+    review_date_modified: "",
   };
 
   static contextType = Context;
@@ -34,8 +35,13 @@ export default class ReviewEdit extends React.Component {
       review_takeaway: review.review_takeaway,
       review_notes: review.review_notes,
       review_recommend: review.review_recommend,
+      review_date_modified: review.review_date_modified,
     });
   }
+
+  handleChangeDateFinished = (e) => {
+    this.setState({ review_date_finished: e.target.value });
+  };
 
   handleChangeRating = (e) => {
     this.setState({
@@ -94,10 +100,11 @@ export default class ReviewEdit extends React.Component {
       review_takeaway: this.state.review_takeaway,
       review_notes: this.state.review_notes,
       review_recommend: this.state.review_recommend,
+      review_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     this.context.editReview(updatedReview, this.state.review_book_id);
-    this.props.history.push("/books");
+    this.props.history.push(`/books/${updatedReview.review_book_id}`);
   };
 
   handleCancel = () => {

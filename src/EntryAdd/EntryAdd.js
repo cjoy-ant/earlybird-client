@@ -51,20 +51,20 @@ export default class EntryAdd extends React.Component {
       entry_id: uuidv4(),
       entry_book_id: this.state.entry_book_id,
       entry_title: this.state.entry_title,
-      entry_category: this.state.entry_title,
-      entry_chapters: this.state.entry_title,
-      entry_pages: this.state.entry_title,
-      entry_quote: this.state.entry_title,
-      entry_notes: this.state.entry_title,
-      entry_date_modified: new Date(),
+      entry_category: this.state.entry_category,
+      entry_chapters: this.state.entry_chapters,
+      entry_pages: this.state.entry_pages,
+      entry_quote: this.state.entry_quote,
+      entry_notes: this.state.entry_notes,
+      entry_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     this.context.addEntry(newEntry);
-    this.props.history.push("/entries");
+    this.props.history.push(`/entries/${newEntry.entry_id}`);
   };
 
   handleClickCancel = () => {
-    this.props.history.push("/entries");
+    this.props.history.push("/entries/");
   };
 
   makeBookDropDownList = () => {
@@ -147,7 +147,6 @@ export default class EntryAdd extends React.Component {
             id="entry-quote"
             type="text"
             onChange={this.handleChangeQuote}
-            required
           ></textarea>
           <br />
           <label htmlFor="entry-notes">Notes:</label>
@@ -156,7 +155,6 @@ export default class EntryAdd extends React.Component {
             id="entry-notes"
             type="text"
             onChange={this.handleChangeNotes}
-            required
           ></textarea>
           <br />
 

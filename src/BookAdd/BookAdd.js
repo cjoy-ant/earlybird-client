@@ -38,11 +38,11 @@ export default class BookAdd extends React.Component {
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
       book_finished: false,
-      book_date_modified: new Date(),
+      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     this.context.addBook(newBook);
-    this.props.history.push("/books");
+    this.props.history.push(`/books/${newBook.book_id}`);
   };
 
   handleClickCancel = () => {

@@ -27,7 +27,7 @@ export default class ReviewForm extends React.Component {
   }
 
   handleChangeDateFinished = (e) => {
-    this.setState({ book_date_finished: e.target.value });
+    this.setState({ review_date_finished: e.target.value });
   };
 
   handleChangeRating = (e) => {
@@ -80,7 +80,7 @@ export default class ReviewForm extends React.Component {
     const newReview = {
       review_id: uuidv4(),
       review_book_id: this.state.review_book_id,
-      review_date_modified: new Date(),
+      review_date_modified: new Date().toISOString().substring(0, 10),
       review_rating: this.state.review_rating,
       review_favorite: this.state.review_favorite,
       review_dislike: this.state.review_dislike,
@@ -91,7 +91,7 @@ export default class ReviewForm extends React.Component {
     };
 
     this.context.addReview(newReview, this.state.review_book_id);
-    this.props.history.push("/books");
+    this.props.history.push(`/books/${newReview.review_book_id}`);
   };
 
   handleCancel = () => {

@@ -8,11 +8,11 @@ export default class EntryList extends React.Component {
   static contextType = Context;
 
   makeEntryList = () => {
-    const sorted = this.context.entries.sort((a, b) => {
-      return b.entry_date_modified - a.entry_date_modified;
-    });
+    // const sorted = this.context.entries.sort((a, b) => {
+    //   return b.entry_date_modified - a.entry_date_modified;
+    // });
 
-    const entryList = sorted.map((entry) => {
+    const entryList = this.context.entries.map((entry) => {
       return (
         <li key={entry.entry_id}>
           <Entry
@@ -29,7 +29,6 @@ export default class EntryList extends React.Component {
         </li>
       );
     });
-
     return entryList;
   };
 

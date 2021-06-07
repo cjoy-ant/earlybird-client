@@ -8,11 +8,11 @@ export default class BookList extends React.Component {
   static contextType = Context;
 
   makeBookList = () => {
-    const sorted = this.context.books.sort((a, b) => {
-      return b.book_date_started - a.book_date_started;
-    });
+    // const sorted = this.context.books.sort((a, b) => {
+    //   return b.book_date_started - a.book_date_started;
+    // });
 
-    const bookList = sorted.map((book) => {
+    const bookList = this.context.books.map((book) => {
       return (
         <li key={book.book_id}>
           <Book
