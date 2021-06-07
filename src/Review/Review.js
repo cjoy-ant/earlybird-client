@@ -6,10 +6,19 @@ import "./Review.css";
 export default class Review extends React.Component {
   static contextType = Context;
 
-  handlClickDelete = (e) => {
+  handleClickDelete = (e) => {
     e.preventDefault();
-    this.context.editReview(this.props.review_id);
-    this.props.history.push(`/books/${this.props.review_book_id}`);
+    if (
+      window.confirm(
+        "Are you sure you want to remove this review?\nIf removed, this book will be marked as NOT finished.\nClick OK to remove."
+      )
+    ) {
+      this.context.deleteReview(
+        this.props.review_id,
+        this.props.review_book_id
+      );
+      this.props.history.push("/books");
+    }
   };
 
   render() {

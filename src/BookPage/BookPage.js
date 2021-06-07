@@ -111,6 +111,7 @@ export default class BookPage extends React.Component {
             review_takeaway={review_takeaway}
             review_notes={review_notes}
             review_recommend={review_recommend}
+            history={this.props.history}
           />
         </>
       );
@@ -144,7 +145,7 @@ export default class BookPage extends React.Component {
     if (entries.length > 0) {
       const entryList = entries.map((entry) => {
         return (
-          <li>
+          <li key={entry.entry_id}>
             <Entry
               entry_id={entry.entry_id}
               entry_book_id={entry.entry_book_id}
@@ -162,7 +163,7 @@ export default class BookPage extends React.Component {
       return <ul>{entryList}</ul>;
     } else {
       return (
-        <p class="italic">
+        <p className="italic">
           Write your first entry about '{this.state.book_title}'
         </p>
       );

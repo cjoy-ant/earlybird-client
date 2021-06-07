@@ -75,11 +75,65 @@ class App extends Component {
     });
   };
 
-  addReview = (book_id) => {};
+  addReview = (newReview, review_book_id) => {
+    this.setState({
+      reviews: [...this.state.reviews, newReview],
+    });
+    const findBook = () => {
+      const book = this.state.books.find(
+        (book) => book.book_id === review_book_id
+      );
+      console.log(book);
+      return book;
+    };
+    const book = findBook();
+    const bookFinished = {
+      book_id: book.book_id,
+      book_title: book.book_title,
+      book_author: book.book_author,
+      book_genre: book.book_genre,
+      book_date_started: book.book_date_started,
+      book_finished: true, // changed to TRUE
+    };
+    this.setState({
+      books: this.state.books.map((b) =>
+        b.book_id !== review_book_id ? b : bookFinished
+      ),
+    });
+  };
 
   editReview = (review_id) => {};
 
-  deleteReview = (review_id) => {};
+  deleteReview = (review_id, review_book_id) => {
+    const newReviews = this.state.reviews.filter(
+      (r) => r.review_id !== review_id
+    );
+    this.setState({
+      reviews: newReviews,
+    });
+
+    const findBook = () => {
+      const book = this.state.books.find(
+        (book) => book.book_id === review_book_id
+      );
+      console.log(book);
+      return book;
+    };
+    const book = findBook();
+    const bookNotFinished = {
+      book_id: book.book_id,
+      book_title: book.book_title,
+      book_author: book.book_author,
+      book_genre: book.book_genre,
+      book_date_started: book.book_date_started,
+      book_finished: false, // changed to FALSE
+    };
+    this.setState({
+      books: this.state.books.map((b) =>
+        b.book_id !== review_book_id ? b : bookNotFinished
+      ),
+    });
+  };
 
   render() {
     const value = {
