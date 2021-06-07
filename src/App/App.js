@@ -13,6 +13,7 @@ import EntryPage from "../EntryPage/EntryPage";
 import EntryAdd from "../EntryAdd/EntryAdd";
 import EntryEdit from "../EntryEdit/EntryEdit";
 import ReviewForm from "../ReviewForm/ReviewForm";
+import ReviewEdit from "../ReviewEdit/ReviewEdit";
 import "./App.css";
 import STORE from "../STORE";
 
@@ -102,7 +103,13 @@ class App extends Component {
     });
   };
 
-  editReview = (review_id) => {};
+  editReview = (updatedReview, review_id) => {
+    this.setState({
+      reviews: this.state.reviews.map((r) =>
+        r.review_id !== updatedReview.review_id ? review_id : updatedReview
+      ),
+    });
+  };
 
   deleteReview = (review_id, review_book_id) => {
     const newReviews = this.state.reviews.filter(
@@ -166,6 +173,7 @@ class App extends Component {
           <Route path="/add-entry" component={EntryAdd} />
           <Route path="/edit-entry/:entry_id" component={EntryEdit} />
           <Route path="/review-book/:book_id" component={ReviewForm} />
+          <Route path="/edit-review/:review_id" component={ReviewEdit} />
           <footer>© 2021 EarlyBird</footer>
         </div>
       </Context.Provider>
