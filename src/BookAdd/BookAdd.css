@@ -1,0 +1,31 @@
+.BookAdd form {
+  background: #efefef;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.BookAdd label {
+  display: inline-block;
+  width: 75px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.BookAdd input {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.BookAdd select {
+  width: 310px;
+  margin-bottom: 1rem;
+}
+
+.BookAdd__button-container {
+  margin-top: 1rem;
+}
+
+.BookAdd__button-container button {
+  margin-right: 1rem;
+}

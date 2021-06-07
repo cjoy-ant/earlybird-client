@@ -1,0 +1,29 @@
+.BookList {
+  margin-bottom: 2rem;
+}
+
+.BookList__button-add {
+  margin-left: 3.5rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  background: #efefef;
+  margin: 1rem;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+}
+
+li p {
+  padding-left: 2rem;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}

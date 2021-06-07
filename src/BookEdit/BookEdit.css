@@ -1,0 +1,26 @@
+.BookEdit form {
+  background: #efefef;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.BookEdit label {
+  display: inline-block;
+  width: 75px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.BookEdit input {
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+.BookEdit__button-container {
+  margin-top: 1rem;
+}
+
+.BookEdit__button-container button {
+  margin-right: 1rem;
+}

@@ -1,0 +1,34 @@
+.BookPage {
+  background: #efefef;
+  margin: 1rem 2rem 1rem 2rem;
+  padding: 1rem 2rem 1rem 2rem;
+  list-style: none;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.BookPage__button-container button {
+  margin: 1rem 1rem 1rem 0;
+}
+
+.BookPage__button-container-move {
+  margin: 1rem;
+  text-align: center;
+}
+
+.BookPage__button-container-move button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem 2rem 1rem;
+}
+
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float: right;
+}

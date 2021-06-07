@@ -1,0 +1,45 @@
+.EntryEdit h2 {
+  font-weight: normal;
+}
+
+.EntryEdit form {
+  background: #efefef;
+  margin: 2rem;
+  padding: 2rem;
+}
+
+.EntryEdit label {
+  display: inline-block;
+  width: 80px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.EntryEdit #entry-title,
+.EntryEdit #entry_book_id_list,
+.EntryEdit #entry-category {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit #entry-chapters,
+.EntryEdit #entry-pages {
+  width: 100px;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit textarea {
+  width: 340px;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit__button-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.EntryEdit__button-container button {
+  margin-right: 1rem;
+}

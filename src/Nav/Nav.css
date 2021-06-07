@@ -1,0 +1,27 @@
+/* HEADER */
+header {
+  background: #efefef;
+  padding: 1rem;
+  text-align: center;
+  font-size: 36px;
+}
+
+header a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* NAV */
+nav {
+  background: #6b6b6b;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
