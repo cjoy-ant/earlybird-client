@@ -20,7 +20,7 @@ export default class Entry extends React.Component {
     } = this.props;
 
     const findBook = () => {
-      const book = this.context.books.filter(
+      const book = this.context.books.find(
         (book) => book.book_id === entry_book_id
       );
       return book[0].book_title;

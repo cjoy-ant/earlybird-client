@@ -1,10 +1,10 @@
-form {
+.BookEdit form {
   background: #efefef;
   margin: 2rem;
   padding: 2rem;
 }
 
-label {
+.BookEdit label {
   display: inline-block;
   width: 75px;
   text-align: left;
@@ -12,7 +12,7 @@ label {
   margin-right: 5px;
 }
 
-input {
+.BookEdit input {
   width: 250px;
   margin-bottom: 1rem;
 }

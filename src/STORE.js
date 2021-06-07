@@ -98,6 +98,42 @@ const STORE = {
       entry_date_modified: "12-21-2018",
     },
   ],
+  reviews: [
+    {
+      review_id: "3dcc885e-c723-11eb-b8bc-0242ac130003",
+      review_book_id: "1038017a-c4a8-11eb-8529-0242ac130003",
+      review_rating: "5",
+      review_favorite: "I like how imaginative the book is",
+      review_dislike:
+        "it is a very long read, and sometimes difficult to follow as they skip between time periods quite frequently",
+      review_takeaway: "",
+      review_notes: "not my favorite Murakami book",
+      review_recommend: false,
+    },
+    {
+      review_id: "444c4534-c723-11eb-b8bc-0242ac130003",
+      review_book_id: "0d7c1700-c4a8-11eb-8529-0242ac130003",
+      review_rating: "8",
+      review_favorite:
+        "I enjoy that the poems are simple, but impactful. As a woman of color myself, I resonate with a lot of the emotion and stories behind the poetry.",
+      review_dislike: "",
+      review_takeaway: "",
+      review_notes: "",
+      review_recommend: true,
+    },
+    {
+      review_id: "47476f8e-c723-11eb-b8bc-0242ac130003",
+      review_book_id: "a05abb3a-c4a8-11eb-8529-0242ac130003",
+      review_rating: "7",
+      review_favorite:
+        "I think that the KonMari method will be very useful for purging clothes and papers since those especially tend to get hoarded.",
+      review_dislike: "",
+      review_takeaway:
+        "Only buy and keep that which really makes you truly happy.",
+      review_notes: "",
+      review_recommend: true,
+    },
+  ],
 };
 
 export default STORE;

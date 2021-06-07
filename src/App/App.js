@@ -12,6 +12,7 @@ import EntryList from "../EntryList/EntryList";
 import EntryPage from "../EntryPage/EntryPage";
 import EntryAdd from "../EntryAdd/EntryAdd";
 import EntryEdit from "../EntryEdit/EntryEdit";
+import ReviewForm from "../ReviewForm/ReviewForm";
 import "./App.css";
 import STORE from "../STORE";
 
@@ -19,6 +20,7 @@ class App extends Component {
   state = {
     books: [],
     entries: [],
+    reviews: [],
   };
 
   componentDidMount() {
@@ -69,32 +71,43 @@ class App extends Component {
     });
   };
 
+  addReview = (book_id) => {};
+
+  editReview = (review_id) => {};
+
+  deleteReview = (review_id) => {};
+
   render() {
     const value = {
       books: this.state.books,
       entries: this.state.entries,
+      reviews: this.state.reviews,
       addBook: this.addBook,
       editBook: this.editBook,
       deleteBook: this.deleteBook,
       addEntry: this.addEntry,
       editEntry: this.editEntry,
       deleteEntry: this.deleteEntry,
+      addReview: this.addReview,
+      editReview: this.editReview,
+      deleteReview: this.deleteReview,
     };
 
     return (
       <Context.Provider value={value}>
         <div className="App">
           <Route path="/" component={Nav} />
-          <Route path="/" exact="true" component={Home} />
+          <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/books" exact="true" component={BookList} />
+          <Route path="/books" exact component={BookList} />
           <Route path="/books/:book_id" component={BookPage} />
           <Route path="/add-book" component={BookAdd} />
           <Route path="/edit-book/:book_id" component={BookEdit} />
-          <Route path="/entries" exact="true" component={EntryList} />
+          <Route path="/entries" exact component={EntryList} />
           <Route path="/entries/:entry_id" component={EntryPage} />
           <Route path="/add-entry" component={EntryAdd} />
           <Route path="/edit-entry/:entry_id" component={EntryEdit} />
+          <Route path="/review-book/:book_id" component={ReviewForm} />
           <footer>© 2021 EarlyBird</footer>
         </div>
       </Context.Provider>

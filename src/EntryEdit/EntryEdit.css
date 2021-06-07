@@ -1,14 +1,14 @@
-h2 {
+.EntryEdit h2 {
   font-weight: normal;
 }
 
-form {
+.EntryEdit form {
   background: #efefef;
   margin: 2rem;
   padding: 2rem;
 }
 
-label {
+.EntryEdit label {
   display: inline-block;
   width: 80px;
   text-align: left;
@@ -28,7 +28,7 @@ label {
   margin-bottom: 1rem;
 }
 
-textarea {
+.EntryEdit textarea {
   width: 340px;
   height: 150px;
   margin-bottom: 1rem;

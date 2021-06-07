@@ -1,14 +1,14 @@
-h2 {
+.EntryAdd h2 {
   font-weight: normal;
 }
 
-form {
+.EntryAdd form {
   background: #efefef;
   margin: 2rem;
   padding: 2rem;
 }
 
-label {
+.EntryAdd label {
   display: inline-block;
   width: 80px;
   text-align: left;
@@ -28,7 +28,7 @@ label {
   margin-bottom: 1rem;
 }
 
-textarea {
+.EntryAdd textarea {
   width: 340px;
   height: 150px;
   margin-bottom: 1rem;

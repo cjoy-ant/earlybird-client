@@ -1,10 +1,10 @@
-form {
+.BookAdd form {
   background: #efefef;
   margin: 2rem;
   padding: 2rem;
 }
 
-label {
+.BookAdd label {
   display: inline-block;
   width: 75px;
   text-align: left;
@@ -12,12 +12,12 @@ label {
   margin-right: 5px;
 }
 
-input {
+.BookAdd input {
   width: 300px;
   margin-bottom: 1rem;
 }
 
-select {
+.BookAdd select {
   width: 310px;
   margin-bottom: 1rem;
 }

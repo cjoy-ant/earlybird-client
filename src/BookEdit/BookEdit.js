@@ -77,7 +77,7 @@ export default class BookEdit extends React.Component {
     return (
       <div className="BookEdit">
         <h2>
-          Edit <span class="bold italic">'{book.book_title}'</span>
+          Edit <span className="bold italic">'{book.book_title}'</span>
         </h2>
         <form>
           <label htmlFor="book-title">Title:</label>
