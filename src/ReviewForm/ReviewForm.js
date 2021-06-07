@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import Context from "../Context";
 import "./ReviewForm.css";
 
@@ -63,7 +64,7 @@ export default class ReviewForm extends React.Component {
     e.preventDefault();
 
     const newReview = {
-      review_id: this.state.review_id,
+      review_id: uuidv4(),
       review_book_id: this.state.review_book_id,
       review_rating: this.state.review_rating,
       review_favorite: this.state.review_favorite,
