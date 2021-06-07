@@ -24,7 +24,11 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.setState({ books: STORE.books, entries: STORE.entries });
+    this.setState({
+      books: STORE.books,
+      entries: STORE.entries,
+      reviews: STORE.reviews,
+    });
   }
 
   addBook = (newBook) => {

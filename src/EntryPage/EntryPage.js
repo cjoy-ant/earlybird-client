@@ -82,7 +82,7 @@ export default class EntryPage extends React.Component {
             </button>
           </div>
         </div>
-        <div className="EntryPage__button-container-move">
+        {/* <div className="EntryPage__button-container-move">
           <div className="button-left">
             <button
               type="button"
@@ -97,7 +97,7 @@ export default class EntryPage extends React.Component {
               Next
             </button>
           </div>
-        </div>
+        </div> */}
       </>
     );
   }

@@ -131,7 +131,7 @@ export default class EntryEdit extends React.Component {
     return (
       <div className="EntryEdit">
         <h2>
-          Edit <span class="bold italic">'{entry.entry_title}'</span>
+          Edit <span className="bold italic">'{entry.entry_title}'</span>
         </h2>
         <form onSubmit={this.validateBook}>
           <label htmlFor="entry-title">Title:</label>

@@ -14,10 +14,21 @@
 }
 
 .BookPage__button-container-move {
-  margin: 1rem 0 1rem 0;
+  margin: 1rem;
   text-align: center;
 }
 
 .BookPage__button-container-move button {
-  margin: 0 1rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 1rem 2rem 1rem;
+}
+
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float: right;
 }

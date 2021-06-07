@@ -4,6 +4,7 @@ import "./BookEdit.css";
 
 export default class BookEdit extends React.Component {
   state = {
+    book_id: "",
     book_title: "",
     book_author: "",
     book_genre: "",
@@ -51,6 +52,7 @@ export default class BookEdit extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const updatedBook = {
+      book_id: this.state.book_id,
       book_title: this.state.book_title,
       book_author: this.state.book_author,
       book_genre: this.state.book_genre,
@@ -79,7 +81,7 @@ export default class BookEdit extends React.Component {
         <h2>
           Edit <span className="bold italic">'{book.book_title}'</span>
         </h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="book-title">Title:</label>
           <input
             id="book-title"

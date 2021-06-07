@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Book from "../Book/Book";
+import Entry from "../Entry/Entry";
 import Review from "../Review/Review";
 import Context from "../Context";
 import "./BookPage.css";
@@ -42,18 +43,14 @@ export default class BookPage extends React.Component {
       book_date_modified: book.book_date_modified,
     });
 
-    this.isFinished();
-  }
-
-  isFinished = () => {
-    const { book_id, book_finished } = this.state;
-
-    if (book_finished) {
+    if (book.book_finished) {
       const findReview = (reviews, book_id) => {
-        reviews.find((review) => review.review_book_id === book_id);
+        const review = reviews.find(
+          (review) => review.review_book_id === book_id
+        );
+        return review;
       };
       const review = findReview(this.context.reviews, book_id);
-      console.log(review);
       this.setState({
         review_id: review.review_id,
         review_book_id: review.review_book_id,
@@ -64,8 +61,29 @@ export default class BookPage extends React.Component {
         review_notes: review.review_notes,
         review_recommend: review.review_recommend,
       });
-    } else return;
-  };
+    }
+  }
+
+  // isFinished = () => {
+  //   const { book_id, book_finished } = this.props.match.params;
+  //   console.log(book_finished);
+  //   if (book_finished) {
+  //     const findReview = (reviews, book_id) =>
+  //       reviews.find((review) => review.review_book_id === book_id);
+  //     const review = findReview(this.context.reviews, book_id);
+  //     console.log(review);
+  //     this.setState({
+  //       review_id: review.review_id,
+  //       review_book_id: review.review_book_id,
+  //       review_rating: review.review_rating,
+  //       review_favorite: review.review_favorite,
+  //       review_dislike: review.review_dislike,
+  //       review_takeaway: review.review_takeaway,
+  //       review_notes: review.review_notes,
+  //       review_recommend: review.review_recommend,
+  //     });
+  //   } else return;
+  // };
 
   isReview = () => {
     const {
@@ -103,6 +121,50 @@ export default class BookPage extends React.Component {
             Mark as Finished
           </button>
         </Link>
+      );
+    }
+  };
+
+  isEntries = () => {
+    const entries = this.context.entries.filter(
+      (entry) => entry.entry_book_id === this.state.book_id
+    );
+    return entries;
+  };
+
+  findEntries = () => {
+    // const isEntries = (entries, book_id) => {
+    // entries.filter((entry) => entry.entry_book_id === book_id);
+    // };
+    // const entries = isEntries(this.context.entries, this.state.book_id);
+    // console.log(entries);
+
+    const entries = this.isEntries();
+
+    if (entries.length > 0) {
+      const entryList = entries.map((entry) => {
+        return (
+          <li>
+            <Entry
+              entry_id={entry.entry_id}
+              entry_book_id={entry.entry_book_id}
+              entry_title={entry.entry_title}
+              entry_category={entry.entry_category}
+              entry_chapters={entry.entry_chapters}
+              entry_pages={entry.entry_pages}
+              entry_quote={entry.entry_quote}
+              entry_notes={entry.entry_notes}
+              entry_date_modified={entry.entry_date_modified}
+            />
+          </li>
+        );
+      });
+      return <ul>{entryList}</ul>;
+    } else {
+      return (
+        <p class="italic">
+          Write your first entry about '{this.state.book_title}'
+        </p>
       );
     }
   };
@@ -159,17 +221,25 @@ export default class BookPage extends React.Component {
             </button>
             <br />
             {this.isReview()}
+            <br />
+            <div className="BookPage__entries">
+              <h3>Entries</h3>
+              {this.findEntries()}
+            </div>
           </div>
         </div>
-        <div className="BookPage__button-container-move">
-          <button type="button" id="BookPage__previous" aria-label="previous">
-            Previous
-          </button>
-
-          <button type="button" id="BookPage__next" aria-label="next">
-            Next
-          </button>
-        </div>
+        {/* <div className="BookPage__button-container-move">
+          <div className="button-left">
+            <button type="button" id="BookPage__previous" aria-label="previous">
+              Previous
+            </button>
+          </div>
+          <div className="button-right">
+            <button type="button" id="BookPage__next" aria-label="next">
+              Next
+            </button>
+          </div>
+        </div> */}
       </>
     );
   }

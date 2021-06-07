@@ -30,8 +30,7 @@ export default class Review extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">My favorite part:</span>{" "}
-            {review_favorite}
+            <span className="bold">My favorite part:</span> {review_favorite}
             <br />
           </>
         );
@@ -44,8 +43,7 @@ export default class Review extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">What I disliked:</span>{" "}
-            {review_dislike}
+            <span className="bold">What I disliked:</span> {review_dislike}
             <br />
           </>
         );
@@ -58,8 +56,7 @@ export default class Review extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">Biggest takeaway:</span>{" "}
-            {review_takeaway}
+            <span className="bold">Biggest takeaway:</span> {review_takeaway}
             <br />
           </>
         );
@@ -72,7 +69,7 @@ export default class Review extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">Other notes:</span> {review_notes}
+            <span className="bold">Other notes:</span> {review_notes}
             <br />
           </>
         );

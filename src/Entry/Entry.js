@@ -6,10 +6,27 @@ import "./Entry.css";
 export default class Entry extends React.Component {
   static contextType = Context;
 
+  state = {
+    book_title: "",
+  };
+
+  // componentDidMount() {
+  //   const findBook = () => {
+  //     const book = this.context.books.find(
+  //       (book) => book.book_id === this.props.entry_book_id
+  //     );
+  //     // return book.book_title; **NEED TO FIX THIS**
+  //   };
+
+  //   this.setState({
+  //     book_title: findBook(),
+  //   });
+  // }
+
   render() {
     const {
       entry_id,
-      entry_book_id,
+      // entry_book_id,
       entry_title,
       entry_category,
       entry_chapters,
@@ -19,12 +36,12 @@ export default class Entry extends React.Component {
       entry_date_modified,
     } = this.props;
 
-    const findBook = () => {
-      const book = this.context.books.find(
-        (book) => book.book_id === entry_book_id
-      );
-      return book[0].book_title;
-    };
+    // const findBook = () => {
+    //   const book = this.context.books.find(
+    //     (book) => book.book_id === entry_book_id
+    //   );
+    //   return book.book_title;
+    // };
 
     const isChapters = () => {
       if (entry_chapters === "") {
@@ -84,7 +101,7 @@ export default class Entry extends React.Component {
           <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
         </h3>
         <p>
-          <span className="large bold">{findBook()}</span> |{" "}
+          <span className="large bold">{this.state.book_title}</span> |{" "}
           <span className="italic">{entry_category}</span>
           <br />
           {isChapters()}
