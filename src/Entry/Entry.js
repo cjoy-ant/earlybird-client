@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { format } from "date-fns";
+// import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
 import "./Entry.css";
 
@@ -49,7 +51,8 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">Chapter:</span> {entry_chapters}
+            <span className="bold small">Chapter:</span>{" "}
+            <span className="small">{entry_chapters}</span>
             <br />
           </>
         );
@@ -62,7 +65,8 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
-            <span className="bold small">Page:</span> {entry_pages}
+            <span className="bold small">Page:</span>{" "}
+            <span className="small">{entry_pages}</span>
             <br />
           </>
         );
@@ -108,11 +112,15 @@ export default class Entry extends React.Component {
           {isPages()}
           <br />
           {isQuote()}
+          <br />
           {isNotes()}
           <br />
           <br />
           <span className="bold small">Last updated:</span>{" "}
-          {entry_date_modified}
+          <span className="small">
+            {/* {format(utcToZonedTime(entry_date_modified), "MMMM d, yyyy")} */}
+            {entry_date_modified}
+          </span>
         </p>
       </div>
     );

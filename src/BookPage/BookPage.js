@@ -13,16 +13,17 @@ export default class BookPage extends React.Component {
     book_author: "",
     book_genre: "",
     book_date_started: "",
-    book_finished: false,
+    book_finished: "",
     book_date_modified: "",
     review_id: "",
     review_book_id: "",
+    review_date_finished: "",
     review_rating: "",
     review_favorite: "",
     review_dislike: "",
     review_takeaway: "",
     review_notes: "",
-    review_recommend: false,
+    review_recommend: "",
   };
 
   static contextType = Context;
@@ -54,6 +55,7 @@ export default class BookPage extends React.Component {
       this.setState({
         review_id: review.review_id,
         review_book_id: review.review_book_id,
+        review_date_finished: review.review_date_finished,
         review_rating: review.review_rating,
         review_favorite: review.review_favorite,
         review_dislike: review.review_dislike,
@@ -91,6 +93,7 @@ export default class BookPage extends React.Component {
       book_finished,
       review_id,
       review_book_id,
+      review_date_finished,
       review_rating,
       review_favorite,
       review_dislike,
@@ -105,6 +108,7 @@ export default class BookPage extends React.Component {
           <Review
             review_id={review_id}
             review_book_id={review_book_id}
+            review_date_finished={review_date_finished}
             review_rating={review_rating}
             review_favorite={review_favorite}
             review_dislike={review_dislike}

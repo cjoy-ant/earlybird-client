@@ -102,6 +102,7 @@ const STORE = {
     {
       review_id: "3dcc885e-c723-11eb-b8bc-0242ac130003",
       review_book_id: "1038017a-c4a8-11eb-8529-0242ac130003",
+      review_date_finished: "2019-01-14",
       review_rating: "5",
       review_favorite: "I like how imaginative the book is",
       review_dislike:
@@ -114,6 +115,7 @@ const STORE = {
     {
       review_id: "444c4534-c723-11eb-b8bc-0242ac130003",
       review_book_id: "0d7c1700-c4a8-11eb-8529-0242ac130003",
+      review_date_finished: "2020-08-25",
       review_rating: "8",
       review_favorite:
         "I enjoy that the poems are simple, but impactful. As a woman of color myself, I resonate with a lot of the emotion and stories behind the poetry.",
@@ -126,6 +128,7 @@ const STORE = {
     {
       review_id: "47476f8e-c723-11eb-b8bc-0242ac130003",
       review_book_id: "a05abb3a-c4a8-11eb-8529-0242ac130003",
+      review_date_finished: "2021-02-07",
       review_rating: "7",
       review_favorite:
         "I think that the KonMari method will be very useful for purging clothes and papers since those especially tend to get hoarded.",

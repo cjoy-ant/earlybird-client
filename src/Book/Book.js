@@ -1,4 +1,6 @@
 import React from "react";
+// import { format } from "date-fns";
+// import { utcToZonedTime } from "date-fns-tz";
 import { Link } from "react-router-dom";
 
 export default class Book extends React.Component {
@@ -30,9 +32,11 @@ export default class Book extends React.Component {
           <span className="italic">{book_genre}</span>
           <br />
           <br />
-          <span className="bold">Date Started:</span> {book_date_started}
+          <span className="bold">When I started:</span>{" "}
+          {/* {format(utcToZonedTime(book_date_started), "MMMM d, yyyy")} */}
+          {book_date_started}
           <br />
-          <span className="bold">Book Finished:</span> {bookFinished()}
+          <span className="bold">Am I finished?</span> {bookFinished()}
         </p>
       </div>
     );

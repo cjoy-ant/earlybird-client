@@ -20,6 +20,10 @@
   margin-left: 1rem;
 }
 
+.ReviewEdit #book-date-finished {
+  margin-left: 0.4rem;
+}
+
 .ReviewEdit input,
 .ReviewEdit textarea {
   margin-top: 0.5rem;

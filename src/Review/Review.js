@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { format } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
 import "./Review.css";
 
@@ -25,6 +27,7 @@ export default class Review extends React.Component {
     const {
       review_id,
       //review_book_id,
+      review_date_finished,
       review_rating,
       review_favorite,
       review_dislike,
@@ -97,6 +100,9 @@ export default class Review extends React.Component {
       <div className="Review">
         <h3>My Review</h3>
         <p>
+          <span className="bold">Finished on:</span>{" "}
+          {format(utcToZonedTime(review_date_finished), "MMMM d, yyyy")}
+          <br />
           <span className="bold">Rating:</span> {review_rating}/10
           <br />
           {isFavorite()}

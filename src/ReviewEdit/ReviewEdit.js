@@ -6,6 +6,7 @@ export default class ReviewEdit extends React.Component {
   state = {
     review_id: "",
     review_book_id: "",
+    review_date_finished: "",
     review_rating: "",
     review_favorite: "",
     review_dislike: "",
@@ -26,6 +27,7 @@ export default class ReviewEdit extends React.Component {
     this.setState({
       review_id: review.review_id,
       review_book_id: review.review_book_id,
+      review_date_finished: review.review_date_finished,
       review_rating: review.review_rating,
       review_favorite: review.review_favorite,
       review_dislike: review.review_dislike,
@@ -85,6 +87,7 @@ export default class ReviewEdit extends React.Component {
     const updatedReview = {
       review_id: this.state.review_id,
       review_book_id: this.state.review_book_id,
+      review_date_finished: this.state.review_date_finished,
       review_rating: this.state.review_rating,
       review_favorite: this.state.review_favorite,
       review_dislike: this.state.review_dislike,
@@ -105,6 +108,7 @@ export default class ReviewEdit extends React.Component {
     const {
       // review_id,
       // review_book_id,
+      review_date_finished,
       review_rating,
       review_favorite,
       review_dislike,
@@ -141,6 +145,18 @@ export default class ReviewEdit extends React.Component {
       <div className="ReviewEdit">
         <h2>Edit your review</h2>
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor="book-date-finished" className="bold">
+            Date Finished:
+          </label>
+          <input
+            id="book-date-finished"
+            type="date"
+            aria-label="date"
+            defaultValue={review_date_finished}
+            onChange={this.handleChangeDateFinished}
+            required
+          ></input>
+          <br />
           <label htmlFor="review_rating" className="bold">
             Rating (0-10):
           </label>

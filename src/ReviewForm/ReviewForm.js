@@ -7,12 +7,14 @@ export default class ReviewForm extends React.Component {
   state = {
     review_id: "",
     review_book_id: "",
+    review_date_modified: "",
     review_rating: "0",
     review_favorite: "",
     review_dislike: "",
     review_takeaway: "",
     review_notes: "",
     review_recommend: "",
+    review_date_finished: "",
   };
 
   static contextType = Context;
@@ -23,6 +25,10 @@ export default class ReviewForm extends React.Component {
       review_book_id: book_id,
     });
   }
+
+  handleChangeDateFinished = (e) => {
+    this.setState({ book_date_finished: e.target.value });
+  };
 
   handleChangeRating = (e) => {
     this.setState({
@@ -74,12 +80,14 @@ export default class ReviewForm extends React.Component {
     const newReview = {
       review_id: uuidv4(),
       review_book_id: this.state.review_book_id,
+      review_date_modified: new Date(),
       review_rating: this.state.review_rating,
       review_favorite: this.state.review_favorite,
       review_dislike: this.state.review_dislike,
       review_takeaway: this.state.review_takeaway,
       review_notes: this.state.review_notes,
       review_recommend: this.state.review_recommend,
+      review_date_finished: this.state.date_finished,
     };
 
     this.context.addReview(newReview, this.state.review_book_id);
@@ -96,6 +104,17 @@ export default class ReviewForm extends React.Component {
         <h2 className="italics">Congrats on finishing this book!</h2>
         <h2>Review this book:</h2>
         <form onSubmit={this.handleSubmit}>
+          <label htmlFor="book-date-finished" className="bold">
+            Date Finished:
+          </label>
+          <input
+            id="book-date-finished"
+            type="date"
+            aria-label="date"
+            onChange={this.handleChangeDateFinished}
+            required
+          ></input>
+          <br />
           <label htmlFor="review_rating" className="bold">
             Rating (0-10):
           </label>
