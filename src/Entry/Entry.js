@@ -17,7 +17,8 @@ export default class Entry extends React.Component {
   //     const book = this.context.books.find(
   //       (book) => book.book_id === this.props.entry_book_id
   //     );
-  //     // return book.book_title; **NEED TO FIX THIS**
+  //     console.log(book.book_title);
+  //     return book.book_title;
   //   };
 
   //   this.setState({
@@ -28,7 +29,7 @@ export default class Entry extends React.Component {
   render() {
     const {
       entry_id,
-      // entry_book_id,
+      entry_book_id,
       entry_title,
       entry_category,
       entry_chapters,
@@ -38,12 +39,19 @@ export default class Entry extends React.Component {
       entry_date_modified,
     } = this.props;
 
-    // const findBook = () => {
-    //   const book = this.context.books.find(
-    //     (book) => book.book_id === entry_book_id
-    //   );
-    //   return book.book_title;
-    // };
+    const findBook = () => {
+      const book = this.context.books.find(
+        (book) => book.book_id === entry_book_id
+      );
+      if (book) {
+        return book.book_title;
+      } else return;
+      // console.log(entry_book_id);
+      // console.log(book);
+      // console.log(book.book_id);
+      // console.log(book.book_title); //just for debugging
+      // return book.book_title; //keeps erroring on EntryPage "cannot read property book_title of undefined"
+    };
 
     const isChapters = () => {
       if (entry_chapters === "") {
@@ -105,7 +113,7 @@ export default class Entry extends React.Component {
           <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
         </h3>
         <p>
-          {/* <span className="large bold">{this.state.book_title}</span> |{" "} */}
+          <span className="large bold">{findBook()}</span> |{" "}
           <span className="italic">{entry_category}</span>
           <br />
           {isChapters()}
