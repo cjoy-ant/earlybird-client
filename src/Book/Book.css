@@ -1,11 +1,15 @@
-ul {
+.Book h3 {
+  text-align: center;
+}
+
+.Book ul {
   list-style: none;
 }
 
-.italic {
+.Book .italic {
   font-style: italic;
 }
 
-.bold {
+.Book .bold {
   font-weight: bold;
 }

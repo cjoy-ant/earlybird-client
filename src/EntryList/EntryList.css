@@ -1,37 +1,44 @@
 .EntryList {
-  margin-bottom: 2rem;
+  margin: 1rem 1rem 3rem 1rem;
+}
+
+.EntryList h2,
+.EntryList h3 {
+  text-align: center;
 }
 
 .EntryList__button-add {
-  margin-left: 3.5rem;
+  margin-left: 2rem;
 }
 
-ul {
+.EntryList ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-li {
+.EntryList li {
   background: #efefef;
-  margin: 1rem;
-  padding: 0.5rem 2rem 0.5rem 2rem;
+  margin: 2rem;
+  padding: 1rem 2rem 1rem 2rem;
 }
 
-li p {
-  padding-left: 2rem;
+.EntryList li p {
+  padding-left: 1rem;
 }
 
-.italic {
+.EntryList .italic {
   font-style: italic;
 }
 
-.bold {
+.EntryList .bold {
   font-weight: bold;
 }
 
-.large {
+.EntryList .large {
   font-size: 1.1rem;
 }
 
-.small {
+.EntryList .small {
   font-size: 0.85rem;
 }

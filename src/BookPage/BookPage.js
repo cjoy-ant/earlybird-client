@@ -104,7 +104,7 @@ export default class BookPage extends React.Component {
 
     if (book_finished) {
       return (
-        <>
+        <div className="BookPage__review">
           <Review
             review_id={review_id}
             review_book_id={review_book_id}
@@ -117,7 +117,7 @@ export default class BookPage extends React.Component {
             review_recommend={review_recommend}
             history={this.props.history}
           />
-        </>
+        </div>
       );
     } else {
       return (
@@ -225,12 +225,12 @@ export default class BookPage extends React.Component {
               Delete
             </button>
             <br />
-            {this.isReview()}
-            <br />
-            <div className="BookPage__entries">
-              <h3>Entries</h3>
-              {this.findEntries()}
-            </div>
+          </div>
+          {this.isReview()}
+          <br />
+          <div className="BookPage__entries">
+            <h3>Entries</h3>
+            {this.findEntries()}
           </div>
         </div>
         {/* <div className="BookPage__button-container-move">

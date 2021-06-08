@@ -6,3 +6,7 @@
   font-weight: bold;
   margin-bottom: 1rem;
 }
+
+.Review__button-container button {
+  margin: 1rem 1rem 1rem 0;
+}

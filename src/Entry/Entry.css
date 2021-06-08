@@ -1,3 +1,8 @@
 .Entry ul {
   list-style: none;
 }
+
+.Entry h2,
+.Entry h3 {
+  text-align: center;
+}
