@@ -14,8 +14,8 @@ import EntryAdd from "../EntryAdd/EntryAdd";
 import EntryEdit from "../EntryEdit/EntryEdit";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
+import config from "../config";
 import "./App.css";
-import STORE from "../STORE";
 
 class App extends Component {
   state = {
@@ -100,113 +100,39 @@ class App extends Component {
   };
 
   addBook = (newBook) => {
-    this.setState({
-      books: [...this.state.books, newBook],
-    });
+    this.fetchBooks();
   };
 
   editBook = (updatedBook) => {
-    this.setState({
-      books: this.state.books.map((b) =>
-        b.book_id !== updatedBook.book_id ? b : updatedBook
-      ),
-    });
+    this.fetchBooks();
   };
 
   deleteBook = (book_id) => {
-    const newBooks = this.state.books.filter((b) => b.book_id !== book_id);
-    this.setState({
-      books: newBooks,
-    });
+    this.fetchBooks();
   };
 
   addEntry = (newEntry) => {
-    this.setState({
-      entries: [...this.state.entries, newEntry],
-    });
+    this.fetchEntries();
   };
 
   editEntry = (updatedEntry) => {
-    this.setState({
-      entries: this.state.entries.map((e) =>
-        e.entry_id !== updatedEntry.entry_id ? e : updatedEntry
-      ),
-    });
+    this.fetchEntries();
   };
 
   deleteEntry = (entry_id) => {
-    const newEntries = this.state.entries.filter(
-      (e) => e.entry_id !== entry_id
-    );
-    this.setState({
-      entries: newEntries,
-    });
+    this.fetchEntries();
   };
 
   addReview = (newReview, review_book_id) => {
-    this.setState({
-      reviews: [...this.state.reviews, newReview],
-    });
-    const findBook = () => {
-      const book = this.state.books.find(
-        (book) => book.book_id === review_book_id
-      );
-      console.log(book);
-      return book;
-    };
-    const book = findBook();
-    const bookFinished = {
-      book_id: book.book_id,
-      book_title: book.book_title,
-      book_author: book.book_author,
-      book_genre: book.book_genre,
-      book_date_started: book.book_date_started,
-      book_finished: true, // changed to TRUE
-    };
-    this.setState({
-      books: this.state.books.map((b) =>
-        b.book_id !== review_book_id ? b : bookFinished
-      ),
-    });
+    this.fetchReviews();
   };
 
   editReview = (updatedReview, review_id) => {
-    this.setState({
-      reviews: this.state.reviews.map((r) =>
-        r.review_id !== updatedReview.review_id ? review_id : updatedReview
-      ),
-    });
+    this.fetchReviews();
   };
 
   deleteReview = (review_id, review_book_id) => {
-    const newReviews = this.state.reviews.filter(
-      (r) => r.review_id !== review_id
-    );
-    this.setState({
-      reviews: newReviews,
-    });
-
-    const findBook = () => {
-      const book = this.state.books.find(
-        (book) => book.book_id === review_book_id
-      );
-      console.log(book);
-      return book;
-    };
-    const book = findBook();
-    const bookNotFinished = {
-      book_id: book.book_id,
-      book_title: book.book_title,
-      book_author: book.book_author,
-      book_genre: book.book_genre,
-      book_date_started: book.book_date_started,
-      book_finished: false, // changed to FALSE
-    };
-    this.setState({
-      books: this.state.books.map((b) =>
-        b.book_id !== review_book_id ? b : bookNotFinished
-      ),
-    });
+    this.fetchReviews();
   };
 
   render() {

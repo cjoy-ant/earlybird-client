@@ -1,13 +1,11 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import Context from "../Context";
+import config from "../config";
 import "./ReviewForm.css";
 
 export default class ReviewForm extends React.Component {
   state = {
-    review_id: "",
     review_book_id: "",
-    review_date_modified: "",
     review_rating: "0",
     review_favorite: "",
     review_dislike: "",
@@ -76,11 +74,10 @@ export default class ReviewForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { review_book_id } = this.state;
 
     const newReview = {
-      review_id: uuidv4(),
       review_book_id: this.state.review_book_id,
-      review_date_modified: new Date().toISOString().substring(0, 10),
       review_rating: this.state.review_rating,
       review_favorite: this.state.review_favorite,
       review_dislike: this.state.review_dislike,
@@ -90,8 +87,26 @@ export default class ReviewForm extends React.Component {
       review_date_finished: this.state.date_finished,
     };
 
-    this.context.addReview(newReview, this.state.review_book_id);
-    this.props.history.push(`/books/${newReview.review_book_id}`);
+    fetch(`${config.API_ENDPOINT}/reviews`, {
+      method: "POST",
+      body: JSON.stringify(newReview),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Something went wrong`);
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.context.addReview(newReview, review_book_id);
+        this.props.history.push(`/books/${review_book_id}`);
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
   };
 
   handleCancel = () => {

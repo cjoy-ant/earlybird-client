@@ -4,6 +4,7 @@ import Book from "../Book/Book";
 import Entry from "../Entry/Entry";
 import Review from "../Review/Review";
 import Context from "../Context";
+import config from "../config";
 import "./BookPage.css";
 
 export default class BookPage extends React.Component {
@@ -30,62 +31,57 @@ export default class BookPage extends React.Component {
 
   componentDidMount() {
     const { book_id } = this.props.match.params;
-    const findBook = (books, book_id) =>
-      books.find((book) => book.book_id === book_id);
-    const book = findBook(this.context.books, book_id);
 
-    this.setState({
-      book_id: book.book_id,
-      book_title: book.book_title,
-      book_author: book.book_author,
-      book_genre: book.book_genre,
-      book_date_started: book.book_date_started,
-      book_finished: book.book_finished,
-      book_date_modified: book.book_date_modified,
-    });
-
-    if (book.book_finished) {
-      const findReview = (reviews, book_id) => {
-        const review = reviews.find(
-          (review) => review.review_book_id === book_id
-        );
-        return review;
-      };
-      const review = findReview(this.context.reviews, book_id);
-      this.setState({
-        review_id: review.review_id,
-        review_book_id: review.review_book_id,
-        review_date_finished: review.review_date_finished,
-        review_rating: review.review_rating,
-        review_favorite: review.review_favorite,
-        review_dislike: review.review_dislike,
-        review_takeaway: review.review_takeaway,
-        review_notes: review.review_notes,
-        review_recommend: review.review_recommend,
+    fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          book_id: res.book_id,
+          book_title: res.book_title,
+          book_author: res.book_author,
+          book_genre: res.book_genre,
+          book_date_started: res.book_date_started,
+          book_finished: res.book_finished,
+          book_date_modified: res.book_date_modified,
+        });
+      })
+      .then(() => {
+        if (this.state.book_finished) {
+          const findReview = (reviews, book_id) => {
+            const review = reviews.find(
+              (review) => review.review_book_id === book_id
+            );
+            return review;
+          };
+          const review = findReview(this.context.reviews, book_id);
+          this.setState({
+            review_id: review.review_id,
+            review_book_id: review.review_book_id,
+            review_date_finished: review.review_date_finished,
+            review_rating: review.review_rating,
+            review_favorite: review.review_favorite,
+            review_dislike: review.review_dislike,
+            review_takeaway: review.review_takeaway,
+            review_notes: review.review_notes,
+            review_recommend: review.review_recommend,
+          });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
       });
-    }
   }
-
-  // isFinished = () => {
-  //   const { book_id, book_finished } = this.props.match.params;
-  //   console.log(book_finished);
-  //   if (book_finished) {
-  //     const findReview = (reviews, book_id) =>
-  //       reviews.find((review) => review.review_book_id === book_id);
-  //     const review = findReview(this.context.reviews, book_id);
-  //     console.log(review);
-  //     this.setState({
-  //       review_id: review.review_id,
-  //       review_book_id: review.review_book_id,
-  //       review_rating: review.review_rating,
-  //       review_favorite: review.review_favorite,
-  //       review_dislike: review.review_dislike,
-  //       review_takeaway: review.review_takeaway,
-  //       review_notes: review.review_notes,
-  //       review_recommend: review.review_recommend,
-  //     });
-  //   } else return;
-  // };
 
   isReview = () => {
     const {
@@ -138,12 +134,6 @@ export default class BookPage extends React.Component {
   };
 
   findEntries = () => {
-    // const isEntries = (entries, book_id) => {
-    // entries.filter((entry) => entry.entry_book_id === book_id);
-    // };
-    // const entries = isEntries(this.context.entries, this.state.book_id);
-    // console.log(entries);
-
     const entries = this.isEntries();
 
     if (entries.length > 0) {
@@ -176,14 +166,26 @@ export default class BookPage extends React.Component {
 
   handleClickDelete = (e) => {
     e.preventDefault();
-
+    const { book_id } = this.props.match.params;
     if (
       window.confirm(
         "Are you sure you want to remove this book?\nClick OK to remove."
       )
     ) {
-      this.context.deleteBook(this.state.book_id);
-      this.props.history.push("/books");
+      fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then(() => {
+          this.context.deleteBook(book_id);
+          this.props.history.push("/books");
+        })
+        .catch((error) => {
+          console.error(error);
+          this.setState({ error });
+        });
     }
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
+import config from "../config";
 import Context from "../Context";
-import { v4 as uuidv4 } from "uuid";
 import "./BookAdd.css";
 
 export default class BookAdd extends React.Component {
@@ -53,7 +53,7 @@ export default class BookAdd extends React.Component {
       })
       .then((res) => {
         this.context.addBook(newBook);
-        this.props.history.push(`/books/${newBook.book_id}`);
+        this.props.history.push(`/books`);
       })
       .catch((error) => {
         this.setState({ error });

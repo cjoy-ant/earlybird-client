@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Entry from "../Entry/Entry";
 import Context from "../Context";
+import config from "../config";
 import "./EntryPage.css";
 
 export default class EntryPage extends React.Component {
@@ -21,33 +22,61 @@ export default class EntryPage extends React.Component {
 
   componentDidMount() {
     const { entry_id } = this.props.match.params;
-    const findEntry = (entries, entry_id) =>
-      entries.find((entry) => entry.entry_id === entry_id);
-    const entry = findEntry(this.context.entries, entry_id);
 
-    this.setState({
-      entry_id: entry.entry_id,
-      entry_book_id: entry.entry_book_id,
-      entry_title: entry.entry_title,
-      entry_category: entry.entry_category,
-      entry_chapters: entry.entry_chapters,
-      entry_pages: entry.entry_pages,
-      entry_quote: entry.entry_quote,
-      entry_notes: entry.entry_notes,
-      entry_date_modified: entry.entry_date_modified,
-    });
+    fetch(`${config.API_ENDPOINT}/entries/${entry_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          entry_id: res.entry_id,
+          entry_book_id: res.entry_book_id,
+          entry_title: res.entry_title,
+          entry_category: res.entry_category,
+          entry_chapters: res.entry_chapters,
+          entry_pages: res.entry_pages,
+          entry_quote: res.entry_quote,
+          entry_notes: res.entry_notes,
+          entry_date_modified: res.entry_date_modified,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   handleClickDelete = (e) => {
     e.preventDefault();
+    const { entry_id } = this.props.match.params;
 
     if (
       window.confirm(
         "Are you sure you want to remove this entry?\nClick OK to remove."
       )
     ) {
-      this.context.deleteEntry(this.state.entry_id);
-      this.props.history.push("/entries");
+      fetch(`${config.API_ENDPOINT}/entries/${entry_id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then(() => {
+          this.context.deleteEntry(entry_id);
+          this.props.history.push("/entries");
+        })
+        .catch((error) => {
+          console.error(error);
+          this.setState({ error });
+        });
     }
   };
 
