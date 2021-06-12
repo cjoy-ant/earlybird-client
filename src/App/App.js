@@ -25,12 +25,79 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      books: STORE.books,
-      entries: STORE.entries,
-      reviews: STORE.reviews,
-    });
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/books`),
+      fetch(`${config.API_ENDPOINT}/entries`),
+      fetch(`${config.API_ENDPOINT}/reviews`),
+    ])
+      .then(([booksRes, entriesRes, reviewsRes]) => {
+        if (!booksRes.ok) {
+          return booksRes.json().then((e) => Promise.reject(e));
+        }
+        if (!entriesRes.ok) {
+          return entriesRes.json().then((e) => Promise.reject(e));
+        }
+        if (!reviewsRes.ok) {
+          return reviewsRes.json().then((e) => Promise.reject(e));
+        }
+        return Promise.all([
+          booksRes.json(),
+          entriesRes.json(),
+          reviewsRes.json(),
+        ]);
+      })
+      .then(([books, entries, reviews]) => {
+        this.setState({ books, entries, reviews });
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
   }
+
+  fetchBooks = () => {
+    fetch(`${config.API_ENDPOINT}/books`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          books: res,
+        });
+      });
+  };
+
+  fetchEntries = () => {
+    fetch(`${config.API_ENDPOINT}/entries`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          entries: res,
+        });
+      });
+  };
+
+  fetchReviews = () => {
+    fetch(`${config.API_ENDPOINT}/reviews`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          reviews: res,
+        });
+      });
+  };
 
   addBook = (newBook) => {
     this.setState({
