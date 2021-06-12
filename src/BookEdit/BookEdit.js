@@ -16,21 +16,39 @@ export default class BookEdit extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    const { books } = this.context;
-    const { book_id } = this.props.match.params;
-    const findBook = (books, book_id) =>
-      books.find((book) => book.book_id === book_id);
-    const book = findBook(books, book_id);
+    // const { books } = this.context;
+    // const findBook = (books, book_id) =>
+    //   books.find((book) => book.book_id === book_id);
+    // const book = findBook(books, book_id);
 
-    this.setState({
-      book_id: book.book_id,
-      book_title: book.book_title,
-      book_author: book.book_author,
-      book_genre: book.book_genre,
-      book_date_started: book.book_date_started,
-      book_finished: book.book_finished,
-      book_date_modified: book.book_date_modified,
-    });
+    const { book_id } = this.props.match.params;
+    fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          book_id: book.book_id,
+          book_title: book.book_title,
+          book_author: book.book_author,
+          book_genre: book.book_genre,
+          book_date_started: book.book_date_started,
+          book_finished: book.book_finished,
+          book_date_modified: book.book_date_modified,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   handleChangeTitle = (e) => {
@@ -58,11 +76,28 @@ export default class BookEdit extends React.Component {
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
       book_finished: this.state.book_finished,
-      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.editBook(updatedBook);
-    this.props.history.push(`/books/${updatedBook.book_id}`);
+    fetch(`${config.API_ENDPOINT}/books/${provider_id}`, {
+      method: "PATCH",
+      body: JSON.stringify(updatedProvider),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+      })
+      .then((res) => {
+        this.context.editBook(updatedBook);
+        this.props.history.push(`/books/${updatedBook.book_id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {

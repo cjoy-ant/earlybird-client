@@ -32,13 +32,10 @@ export default class BookAdd extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
-      book_id: uuidv4(),
       book_title: this.state.book_title,
       book_author: this.state.book_author,
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
-      book_finished: false,
-      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
     fetch(`${config.API_ENDPOINT}/books`, {
