@@ -41,8 +41,26 @@ export default class BookAdd extends React.Component {
       book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.addBook(newBook);
-    this.props.history.push(`/books/${newBook.book_id}`);
+    fetch(`${config.API_ENDPOINT}/books`, {
+      method: "POST",
+      body: JSON.stringify(newBook),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Something went wrong`);
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.context.addBook(newBook);
+        this.props.history.push(`/books/${newBook.book_id}`);
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {
