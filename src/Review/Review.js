@@ -11,8 +11,7 @@ export default class Review extends React.Component {
 
   handleClickDelete = (e) => {
     e.preventDefault();
-    const { book_id } = this.props.match.params;
-    const { review_id } = this.props;
+    const { review_id, review_book_id } = this.props;
     if (
       window.confirm(
         "Are you sure you want to remove this review?\nIf removed, this book will be marked as NOT finished.\nClick OK to remove."
@@ -26,7 +25,10 @@ export default class Review extends React.Component {
       })
         .then(() => {
           this.context.deleteBook(review_id);
-          this.props.history.push(`/books/${book_id}`);
+          this.props.history.push(`/books/${review_book_id}`);
+        })
+        .then(() => {
+          window.location.reload();
         })
         .catch((error) => {
           console.error(error);

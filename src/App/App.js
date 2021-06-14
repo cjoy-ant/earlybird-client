@@ -133,6 +133,7 @@ class App extends Component {
 
   deleteReview = (review_id, review_book_id) => {
     this.fetchReviews();
+    this.fetchBooks();
   };
 
   render() {
