@@ -1,6 +1,7 @@
 import React from "react";
 import config from "../config";
 import Context from "../Context";
+import STORE from "../STORE";
 import "./BookAdd.css";
 
 export default class BookAdd extends React.Component {
@@ -29,8 +30,7 @@ export default class BookAdd extends React.Component {
     this.setState({ book_date_started: e.target.value });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = () => {
     const newBook = {
       book_title: this.state.book_title,
       book_author: this.state.book_author,
@@ -64,11 +64,31 @@ export default class BookAdd extends React.Component {
     this.props.history.push("/books");
   };
 
+  makeGenresList = () => {
+    const genres = STORE.genres.map((genre) => {
+      return (
+        <option key={genre} value={genre}>
+          {genre}
+        </option>
+      );
+    });
+    return genres;
+  };
+
+  validateGenre = (e) => {
+    e.preventDefault();
+    if (this.state.book_genre === "0") {
+      alert(`Select a genre`);
+    } else {
+      this.handleSubmit();
+    }
+  };
+
   render() {
     return (
       <div className="BookAdd">
         <h2>Add a Book</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.validateGenre}>
           <label htmlFor="book-title">Title:</label>
           <input
             id="book-title"
@@ -90,14 +110,16 @@ export default class BookAdd extends React.Component {
           ></input>
           <br />
           <label htmlFor="book-genre">Genre:</label>
-          <input
+          <select
             id="book-genre"
-            type="text"
             aria-label="genre"
-            placeholder="(Sci-fi, Mystery, Poetry, Self-help, etc...)"
             onChange={this.handleChangeGenre}
-            required
-          ></input>
+          >
+            <option key="0" value="0">
+              Select a genre...
+            </option>
+            {this.makeGenresList()}
+          </select>
           <br />
           <label htmlFor="book-date-started">Date Started:</label>
           <input

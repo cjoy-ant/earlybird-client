@@ -20,10 +20,13 @@
   margin-right: 5px;
 }
 
-.EntryEdit #entry-title,
-.EntryEdit #entry_book_id_list,
-.EntryEdit #entry-category {
+.EntryEdit #entry-title {
   width: 300px;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit select {
+  width: 310px;
   margin-bottom: 1rem;
 }
 
