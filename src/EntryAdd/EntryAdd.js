@@ -47,7 +47,6 @@ export default class EntryAdd extends React.Component {
   };
 
   handleSubmit = () => {
-    const { entry_id } = this.props.match.params;
     const newEntry = {
       entry_book_id: this.state.entry_book_id,
       entry_title: this.state.entry_title,

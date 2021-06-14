@@ -118,7 +118,7 @@ export default class ReviewEdit extends React.Component {
         }
       })
       .then((res) => {
-        this.context.editEntry(updatedReview);
+        this.context.editReview(updatedReview);
         this.props.history.push(`/books/${review_book_id}`);
       })
       .catch((error) => {
