@@ -84,7 +84,7 @@ export default class ReviewForm extends React.Component {
       review_takeaway: this.state.review_takeaway,
       review_notes: this.state.review_notes,
       review_recommend: this.state.review_recommend,
-      review_date_finished: this.state.date_finished,
+      review_date_finished: this.state.review_date_finished,
     };
 
     fetch(`${config.API_ENDPOINT}/reviews`, {
