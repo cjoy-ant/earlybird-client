@@ -74,6 +74,7 @@ export default class BookAdd extends React.Component {
             id="book-title"
             type="text"
             aria-label="title"
+            placeholder="Title"
             onChange={this.handleChangeTitle}
             required
           />
@@ -83,6 +84,7 @@ export default class BookAdd extends React.Component {
             id="book-author"
             type="text"
             aria-label="author"
+            placeholder="First and Last Name"
             onChange={this.handleChangeAuthor}
             required
           ></input>
@@ -92,6 +94,7 @@ export default class BookAdd extends React.Component {
             id="book-genre"
             type="text"
             aria-label="genre"
+            placeholder="(Sci-fi, Mystery, Poetry, Self-help, etc...)"
             onChange={this.handleChangeGenre}
             required
           ></input>

@@ -114,6 +114,7 @@ export default class EntryAdd extends React.Component {
             id="entry-title"
             type="text"
             aria-label="title"
+            placeholder="Entry Title..."
             onChange={this.handleChangeTitle}
             required
           />
