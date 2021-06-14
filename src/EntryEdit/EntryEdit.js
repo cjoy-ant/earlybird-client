@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "../Context";
+import config from "../config";
 import "./EntryEdit.css";
 
 export default class EntryEdit extends React.Component {
@@ -90,6 +91,8 @@ export default class EntryEdit extends React.Component {
   };
 
   handleSubmit = () => {
+    const { entry_id } = this.props.match.params;
+
     const updatedEntry = {
       entry_id: this.state.entry_id,
       entry_book_id: this.state.entry_book_id,
@@ -99,11 +102,28 @@ export default class EntryEdit extends React.Component {
       entry_pages: this.state.entry_pages,
       entry_quote: this.state.entry_quote,
       entry_notes: this.state.entry_notes,
-      entry_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.editEntry(updatedEntry);
-    this.props.history.push(`/entries/${updatedEntry.entry_id}`);
+    fetch(`${config.API_ENDPOINT}/entries/${entry_id}`, {
+      method: "PATCH",
+      body: JSON.stringify(updatedEntry),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+      })
+      .then((res) => {
+        this.context.editEntry(updatedEntry);
+        this.props.history.push(`/entries/${updatedEntry.entry_id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {

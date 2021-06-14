@@ -127,7 +127,7 @@ export default class Entry extends React.Component {
           <span className="bold small">Last updated:</span>{" "}
           <span className="small">
             {/* {format(utcToZonedTime(entry_date_modified), "MMMM d, yyyy")} */}
-            {entry_date_modified}
+            {entry_date_modified.substring(0, 10)}
           </span>
         </p>
       </div>

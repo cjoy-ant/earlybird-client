@@ -1,6 +1,6 @@
 import React from "react";
+import config from "../config";
 import Context from "../Context";
-import { v4 as uuidv4 } from "uuid";
 import "./BookAdd.css";
 
 export default class BookAdd extends React.Component {
@@ -32,17 +32,32 @@ export default class BookAdd extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const newBook = {
-      book_id: uuidv4(),
       book_title: this.state.book_title,
       book_author: this.state.book_author,
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
-      book_finished: false,
-      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.addBook(newBook);
-    this.props.history.push(`/books/${newBook.book_id}`);
+    fetch(`${config.API_ENDPOINT}/books`, {
+      method: "POST",
+      body: JSON.stringify(newBook),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Something went wrong`);
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.context.addBook(newBook);
+        this.props.history.push(`/books`);
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {
@@ -59,6 +74,7 @@ export default class BookAdd extends React.Component {
             id="book-title"
             type="text"
             aria-label="title"
+            placeholder="Title"
             onChange={this.handleChangeTitle}
             required
           />
@@ -68,6 +84,7 @@ export default class BookAdd extends React.Component {
             id="book-author"
             type="text"
             aria-label="author"
+            placeholder="First and Last Name"
             onChange={this.handleChangeAuthor}
             required
           ></input>
@@ -77,6 +94,7 @@ export default class BookAdd extends React.Component {
             id="book-genre"
             type="text"
             aria-label="genre"
+            placeholder="(Sci-fi, Mystery, Poetry, Self-help, etc...)"
             onChange={this.handleChangeGenre}
             required
           ></input>

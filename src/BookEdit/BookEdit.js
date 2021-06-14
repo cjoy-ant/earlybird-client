@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "../Context";
+import config from "../config";
 import "./BookEdit.css";
 
 export default class BookEdit extends React.Component {
@@ -51,6 +52,8 @@ export default class BookEdit extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { book_id } = this.props.match.params;
+
     const updatedBook = {
       book_id: this.state.book_id,
       book_title: this.state.book_title,
@@ -58,11 +61,28 @@ export default class BookEdit extends React.Component {
       book_genre: this.state.book_genre,
       book_date_started: this.state.book_date_started,
       book_finished: this.state.book_finished,
-      book_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.editBook(updatedBook);
-    this.props.history.push(`/books/${updatedBook.book_id}`);
+    fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+      method: "PATCH",
+      body: JSON.stringify(updatedBook),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+      })
+      .then((res) => {
+        this.context.editBook(updatedBook);
+        this.props.history.push(`/books/${updatedBook.book_id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {

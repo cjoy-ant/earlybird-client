@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import { format } from "date-fns";
 // import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
+import config from "../config";
 import "./Review.css";
 
 export default class Review extends React.Component {
@@ -10,16 +11,29 @@ export default class Review extends React.Component {
 
   handleClickDelete = (e) => {
     e.preventDefault();
+    const { review_id, review_book_id } = this.props;
     if (
       window.confirm(
         "Are you sure you want to remove this review?\nIf removed, this book will be marked as NOT finished.\nClick OK to remove."
       )
     ) {
-      this.context.deleteReview(
-        this.props.review_id,
-        this.props.review_book_id
-      );
-      this.props.history.push("/books");
+      fetch(`${config.API_ENDPOINT}/reviews/${review_id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then(() => {
+          this.context.deleteBook(review_id);
+          this.props.history.push(`/books/${review_book_id}`);
+        })
+        .then(() => {
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error(error);
+          this.setState({ error });
+        });
     }
   };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import Context from "../Context";
+import config from "../config";
 import "./ReviewEdit.css";
 
 export default class ReviewEdit extends React.Component {
@@ -89,6 +90,8 @@ export default class ReviewEdit extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const { review_id } = this.props.match.params;
+    const { review_book_id } = this.state;
 
     const updatedReview = {
       review_id: this.state.review_id,
@@ -100,11 +103,28 @@ export default class ReviewEdit extends React.Component {
       review_takeaway: this.state.review_takeaway,
       review_notes: this.state.review_notes,
       review_recommend: this.state.review_recommend,
-      review_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.editReview(updatedReview, this.state.review_book_id);
-    this.props.history.push(`/books/${updatedReview.review_book_id}`);
+    fetch(`${config.API_ENDPOINT}/reviews/${review_id}`, {
+      method: "PATCH",
+      body: JSON.stringify(updatedReview),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+      })
+      .then((res) => {
+        this.context.editReview(updatedReview);
+        this.props.history.push(`/books/${review_book_id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   };
 
   handleCancel = () => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import Context from "../Context";
+import config from "../config";
 import "./EntryAdd.css";
 
 export default class EntryAdd extends React.Component {
@@ -48,7 +48,6 @@ export default class EntryAdd extends React.Component {
 
   handleSubmit = () => {
     const newEntry = {
-      entry_id: uuidv4(),
       entry_book_id: this.state.entry_book_id,
       entry_title: this.state.entry_title,
       entry_category: this.state.entry_category,
@@ -56,11 +55,28 @@ export default class EntryAdd extends React.Component {
       entry_pages: this.state.entry_pages,
       entry_quote: this.state.entry_quote,
       entry_notes: this.state.entry_notes,
-      entry_date_modified: new Date().toISOString().substring(0, 10),
     };
 
-    this.context.addEntry(newEntry);
-    this.props.history.push(`/entries/${newEntry.entry_id}`);
+    fetch(`${config.API_ENDPOINT}/entries`, {
+      method: "POST",
+      body: JSON.stringify(newEntry),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Something went wrong`);
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.context.addEntry(newEntry);
+        this.props.history.push(`/entries`);
+      })
+      .catch((error) => {
+        this.setState({ error });
+      });
   };
 
   handleClickCancel = () => {
@@ -98,6 +114,7 @@ export default class EntryAdd extends React.Component {
             id="entry-title"
             type="text"
             aria-label="title"
+            placeholder="Entry Title..."
             onChange={this.handleChangeTitle}
             required
           />
