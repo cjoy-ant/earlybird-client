@@ -27,7 +27,8 @@ export default class BookAdd extends React.Component {
   };
 
   handleChangeDateStarted = (e) => {
-    this.setState({ book_date_started: e.target.value });
+    const date = new Date(e.target.value);
+    this.setState({ book_date_started: date });
   };
 
   handleSubmit = () => {
