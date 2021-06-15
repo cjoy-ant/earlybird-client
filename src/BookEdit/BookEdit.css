@@ -13,8 +13,12 @@
 }
 
 .BookEdit input {
-  width: 250px;
+  width: 300px;
   margin-bottom: 1rem;
+}
+
+.BookEdit select {
+  width: 310px;
 }
 
 .BookEdit__button-container {

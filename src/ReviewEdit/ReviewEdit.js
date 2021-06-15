@@ -41,7 +41,8 @@ export default class ReviewEdit extends React.Component {
   }
 
   handleChangeDateFinished = (e) => {
-    this.setState({ review_date_finished: e.target.value });
+    const date = new Date(e.target.value);
+    this.setState({ review_date_finished: date });
   };
 
   handleChangeRating = (e) => {

@@ -34,7 +34,7 @@ export default class Book extends React.Component {
           <br />
           <span className="bold">When I started:</span>{" "}
           {/* {format(utcToZonedTime(book_date_started), "MMMM d, yyyy")} */}
-          {book_date_started}
+          {Date(book_date_started).toLocaleString()}
           <br />
           <span className="bold">Am I finished?</span> {bookFinished()}
         </p>

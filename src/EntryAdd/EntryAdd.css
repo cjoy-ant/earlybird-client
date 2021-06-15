@@ -20,10 +20,13 @@
   margin-right: 5px;
 }
 
-.EntryAdd #entry-title,
-.EntryAdd #entry_book_id_list,
-.EntryAdd #entry-category {
+.EntryAdd #entry-title {
   width: 300px;
+  margin-bottom: 1rem;
+}
+
+.EntryAdd select {
+  width: 310px;
   margin-bottom: 1rem;
 }
 

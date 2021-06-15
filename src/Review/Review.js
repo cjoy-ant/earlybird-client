@@ -116,7 +116,7 @@ export default class Review extends React.Component {
         <p>
           <span className="bold">Finished on:</span>{" "}
           {/* {format(utcToZonedTime(review_date_finished), "MMMM d, yyyy")} */}
-          {review_date_finished}
+          {Date(review_date_finished).toLocaleString()}
           <br />
           <span className="bold">Rating:</span> {review_rating}/10
           <br />
