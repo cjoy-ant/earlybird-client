@@ -88,8 +88,6 @@ export default class Entry extends React.Component {
       }
     };
 
-    const date = Date(entry_date_modified);
-
     return (
       <div className="Entry">
         <h3>
