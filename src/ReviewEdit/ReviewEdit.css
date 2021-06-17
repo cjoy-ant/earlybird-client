@@ -61,17 +61,18 @@
   font-size: 22px;
 }
 
-form label {
+.ReviewEdit form label {
   color: #2b1c11;
   font-size: 16px;
 }
 
-form input,
-form select {
+.ReviewEdit form input,
+.ReviewEdit form select,
+.ReviewEdit form textarea {
   font-size: 14px;
 }
 
-.italic {
+.ReviewEdit .italic {
   font-style: italic;
 }
 
@@ -156,12 +157,13 @@ form select {
     font-size: 24px;
   }
 
-  form label {
+  .ReviewEdit form label {
     font-size: 18px;
   }
 
-  form input,
-  form select {
+  .ReviewEdit form input,
+  .ReviewEdit form select,
+  .ReviewEdit form textarea {
     font-size: 16px;
   }
 
