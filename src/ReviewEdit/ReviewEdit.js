@@ -20,24 +20,37 @@ export default class ReviewEdit extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    const { reviews } = this.context;
     const { review_id } = this.props.match.params;
-    const findReview = (reviews, review_id) =>
-      reviews.find((review) => review.review_id === review_id);
-    const review = findReview(reviews, review_id);
-
-    this.setState({
-      review_id: review.review_id,
-      review_book_id: review.review_book_id,
-      review_date_finished: review.review_date_finished,
-      review_rating: review.review_rating,
-      review_favorite: review.review_favorite,
-      review_dislike: review.review_dislike,
-      review_takeaway: review.review_takeaway,
-      review_notes: review.review_notes,
-      review_recommend: review.review_recommend,
-      review_date_modified: review.review_date_modified,
-    });
+    fetch(`${config.API_ENDPOINT}/reviews/${review_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          review_id: res.review_id,
+          review_book_id: res.review_book_id,
+          review_date_finished: res.review_date_finished,
+          review_rating: res.review_rating,
+          review_favorite: res.review_favorite,
+          review_dislike: res.review_dislike,
+          review_takeaway: res.review_takeaway,
+          review_notes: res.review_notes,
+          review_recommend: res.review_recommend,
+          review_date_modified: res.review_date_modified,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   handleChangeDateFinished = (e) => {
@@ -160,14 +173,6 @@ export default class ReviewEdit extends React.Component {
         return "";
       }
     };
-
-    // const findBook = (books, book_id) => {
-    //   const book = books.find((book) => book.book_id === book_id);
-    //   return book;
-    // };
-    // const book = findBook(this.context.books, review_book_id);
-    // {book.book_title} keeps erroring as "Cannot read property 'book_title' of undefined"
-    // but console.log shows that it is returning the correct book ????
 
     return (
       <div className="ReviewEdit">

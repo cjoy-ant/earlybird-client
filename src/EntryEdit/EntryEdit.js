@@ -21,23 +21,36 @@ export default class EntryEdit extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    const { entries } = this.context;
     const { entry_id } = this.props.match.params;
-    const findEntry = (entries, entry_id) =>
-      entries.find((entry) => entry.entry_id === entry_id);
-    const entry = findEntry(entries, entry_id);
-
-    this.setState({
-      entry_id: entry.entry_id,
-      entry_title: entry.entry_title,
-      entry_book_id: entry.entry_book_id,
-      entry_category: entry.entry_category,
-      entry_chapters: entry.entry_category,
-      entry_pages: entry.entry_pages,
-      entry_quote: entry.entry_quote,
-      entry_notes: entry.entry_notes,
-      entry_date_modified: entry.entry_date_modified,
-    });
+    fetch(`${config.API_ENDPOINT}/entries/${entry_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          entry_id: res.entry_id,
+          entry_title: res.entry_title,
+          entry_book_id: res.entry_book_id,
+          entry_category: res.entry_category,
+          entry_chapters: res.entry_category,
+          entry_pages: res.entry_pages,
+          entry_quote: res.entry_quote,
+          entry_notes: res.entry_notes,
+          entry_date_modified: res.entry_date_modified,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   makeBookDropDownList = () => {
@@ -128,7 +141,8 @@ export default class EntryEdit extends React.Component {
   };
 
   handleClickCancel = () => {
-    this.props.history.push("/entries");
+    const { entry_id } = this.props.match.params;
+    this.props.history.push(`/entries/${entry_id}`);
   };
 
   makeCategoriesList = () => {
@@ -151,16 +165,26 @@ export default class EntryEdit extends React.Component {
   };
 
   render() {
-    const { entries } = this.context;
-    const { entry_id } = this.props.match.params;
-    const findEntry = (entries, entry_id) =>
-      entries.find((entry) => entry.entry_id === entry_id);
-    const entry = findEntry(entries, entry_id);
+    // const { entries } = this.context;
+    // const { entry_id } = this.props.match.params;
+    // const findEntry = (entries, entry_id) =>
+    //   entries.find((entry) => entry.entry_id === entry_id);
+    // const entry = findEntry(entries, entry_id);
+
+    const {
+      entry_title,
+      entry_book_id,
+      entry_category,
+      entry_chapters,
+      entry_pages,
+      entry_quote,
+      entry_notes,
+    } = this.state;
 
     return (
       <div className="EntryEdit">
         <h2>
-          Edit <span className="bold italic">'{entry.entry_title}'</span>
+          Edit <span className="bold italic">'{entry_title}'</span>
         </h2>
         <form onSubmit={this.validateBook}>
           <label htmlFor="entry-title">Title:</label>
@@ -168,8 +192,8 @@ export default class EntryEdit extends React.Component {
             id="entry-title"
             type="text"
             aria-label="title"
+            defaultValue={entry_title}
             placeholder="Give your entry a title..."
-            defaultValue={entry.entry_title}
             onChange={this.handleChangeTitle}
           />
           <br />
@@ -178,7 +202,7 @@ export default class EntryEdit extends React.Component {
           <select
             id="entry_book_id__list"
             aria-label="book"
-            defaultValue={entry.entry_book_id}
+            defaultValue={entry_book_id}
             onChange={this.handleChangeBook}
           >
             <option key="0" value="">
@@ -192,8 +216,8 @@ export default class EntryEdit extends React.Component {
           <select
             id="entry-category"
             aria-label="category"
+            defaultValue={entry_category}
             onChange={this.handleChangeCategory}
-            defaultValue={entry.entry_category}
           >
             <option key="0" value="0">
               Categorize this entry...
@@ -207,7 +231,7 @@ export default class EntryEdit extends React.Component {
             id="entry-chapters"
             type="text"
             aria-label="chapters"
-            defaultValue={entry.entry_chapters}
+            defaultValue={entry_chapters}
             onChange={this.handleChangeChapters}
           />
           <br />
@@ -217,7 +241,7 @@ export default class EntryEdit extends React.Component {
             id="entry-pages"
             type="text"
             aria-label="pages"
-            defaultValue={entry.entry_pages}
+            defaultValue={entry_pages}
             onChange={this.handleChangePages}
           />
           <br />
@@ -227,7 +251,7 @@ export default class EntryEdit extends React.Component {
           <textarea
             id="entry-quote"
             type="text"
-            defaultValue={entry.entry_quote}
+            defaultValue={entry_quote}
             onChange={this.handleChangeQuote}
           ></textarea>
           <br />
@@ -238,7 +262,7 @@ export default class EntryEdit extends React.Component {
             id="entry-notes"
             type="text"
             aria-label="notes"
-            defaultValue={entry.entry_notes}
+            defaultValue={entry_notes}
             onChange={this.handleChangeNotes}
           ></textarea>
           <br />
