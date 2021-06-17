@@ -154,7 +154,14 @@ export default class BookPage extends React.Component {
           </li>
         );
       });
-      return <ul>{entryList}</ul>;
+      return (
+        <>
+          <ul>{entryList}</ul>{" "}
+          <Link to="/add-entry">
+            <button className="BookPage__add-entry-button">Add an entry</button>
+          </Link>
+        </>
+      );
     } else {
       return (
         <>
@@ -244,13 +251,7 @@ export default class BookPage extends React.Component {
             <h3> • ENTRIES •</h3>
             {this.findEntries()}
           </div>
-          <div className="BookPage__add-entry-button-container">
-            <Link to="/add-entry">
-              <button className="BookPage__add-entry-button">
-                Add an entry
-              </button>
-            </Link>
-          </div>
+          <div className="BookPage__add-entry-button-container"></div>
         </div>
         {/* <div className="BookPage__button-container-move">
           <div className="button-left">
