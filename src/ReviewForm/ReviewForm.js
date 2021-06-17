@@ -13,15 +13,34 @@ export default class ReviewForm extends React.Component {
     review_notes: "",
     review_recommend: "",
     review_date_finished: "",
+    book_title: "",
   };
 
   static contextType = Context;
 
   componentDidMount() {
     const { book_id } = this.props.match.params;
-    this.setState({
-      review_book_id: book_id,
-    });
+    fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          book_title: res.book_title,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   handleChangeDateFinished = (e) => {
@@ -115,18 +134,14 @@ export default class ReviewForm extends React.Component {
   };
 
   render() {
-    const { books } = this.context;
-    const { book_id } = this.props.match.params;
-    const findBook = (books, book_id) =>
-      books.find((book) => book.book_id === book_id);
-    const book = findBook(books, book_id);
+    const { book_title } = this.state;
 
     return (
       <div className="ReviewForm">
         <div className="ReviewForm__header">
           <h2>Congratulations!!</h2>
           <h2 className="large">
-            You finished '<span className="italic">{book.book_title}</span>'.
+            You finished '<span className="italic">{book_title}</span>'.
           </h2>
           <h2>Write your review:</h2>
         </div>
