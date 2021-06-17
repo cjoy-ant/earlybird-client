@@ -50,7 +50,7 @@ Book.defaultProps = {
   book_author: "",
   book_genre: "",
   book_date_started: "",
-  book_finished: "",
+  book_finished: false,
 };
 
 Book.propTypes = {
