@@ -117,7 +117,7 @@ export default class ReviewForm extends React.Component {
   render() {
     const { books } = this.context;
     const { book_id } = this.props.match.params;
-    const findBook = (entries, book_id) =>
+    const findBook = (books, book_id) =>
       books.find((book) => book.book_id === book_id);
     const book = findBook(books, book_id);
 
