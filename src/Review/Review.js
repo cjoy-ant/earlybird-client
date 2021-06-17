@@ -112,11 +112,11 @@ export default class Review extends React.Component {
 
     return (
       <div className="Review">
-        <h3>My Review</h3>
+        <h3> • MY REVIEW •</h3>
         <p>
           <span className="bold">Finished on:</span>{" "}
           {/* {format(utcToZonedTime(review_date_finished), "MMMM d, yyyy")} */}
-          {review_date_finished}
+          {review_date_finished.substr(0, 10)}
           <br />
           <span className="bold">Rating:</span> {review_rating}/10
           <br />

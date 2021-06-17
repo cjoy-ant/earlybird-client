@@ -8,24 +8,6 @@ import "./Entry.css";
 export default class Entry extends React.Component {
   static contextType = Context;
 
-  // state = {
-  //   book_title: "",
-  // };
-
-  // componentDidMount() {
-  //   const findBook = () => {
-  //     const book = this.context.books.find(
-  //       (book) => book.book_id === this.props.entry_book_id
-  //     );
-  //     console.log(book.book_title);
-  //     return book.book_title;
-  //   };
-
-  //   this.setState({
-  //     book_title: findBook(),
-  //   });
-  // }
-
   render() {
     const {
       entry_id,
@@ -46,11 +28,6 @@ export default class Entry extends React.Component {
       if (book) {
         return book.book_title;
       } else return;
-      // console.log(entry_book_id);
-      // console.log(book);
-      // console.log(book.book_id);
-      // console.log(book.book_title); //just for debugging
-      // return book.book_title; //keeps erroring on EntryPage "cannot read property book_title of undefined"
     };
 
     const isChapters = () => {
@@ -59,6 +36,7 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
+            <br />
             <span className="bold small">Chapter:</span>{" "}
             <span className="small">{entry_chapters}</span>
             <br />
@@ -73,6 +51,7 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
+            <br />
             <span className="bold small">Page:</span>{" "}
             <span className="small">{entry_pages}</span>
             <br />
@@ -87,6 +66,7 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
+            <br />
             <span className="bold">Quote:</span> {entry_quote}
             <br />
           </>
@@ -100,6 +80,7 @@ export default class Entry extends React.Component {
       } else {
         return (
           <>
+            <br />
             <span className="bold">Notes:</span> {entry_notes}
             <br />
           </>
@@ -113,21 +94,20 @@ export default class Entry extends React.Component {
           <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
         </h3>
         <p>
-          <span className="large bold">{findBook()}</span> |{" "}
-          <span className="italic">{entry_category}</span>
+          <span className="large bold">
+            <Link to={`/books/${entry_book_id}`}>{findBook()}</Link>
+          </span>{" "}
+          | <span className="italic">{entry_category}</span>
           <br />
           {isChapters()}
           {isPages()}
-          <br />
           {isQuote()}
-          <br />
           {isNotes()}
-          <br />
           <br />
           <span className="bold small">Last updated:</span>{" "}
           <span className="small">
-            {/* {format(utcToZonedTime(entry_date_modified), "MMMM d, yyyy")} */}
-            {entry_date_modified.substring(0, 10)}
+            {/* {format(utcToZonedTime(date), "MMMM d, yyyy")} */}
+            {entry_date_modified.substr(0, 10)}
           </span>
         </p>
       </div>

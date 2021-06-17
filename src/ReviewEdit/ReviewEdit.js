@@ -54,7 +54,8 @@ export default class ReviewEdit extends React.Component {
   }
 
   handleChangeDateFinished = (e) => {
-    this.setState({ review_date_finished: e.target.value });
+    const date = new Date(e.target.value);
+    this.setState({ review_date_finished: date });
   };
 
   handleChangeRating = (e) => {
@@ -184,7 +185,7 @@ export default class ReviewEdit extends React.Component {
             id="book-date-finished"
             type="date"
             aria-label="date"
-            defaultValue={review_date_finished}
+            defaultValue={review_date_finished.substr(0, 10)}
             onChange={this.handleChangeDateFinished}
             required
           ></input>

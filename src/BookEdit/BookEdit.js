@@ -1,6 +1,7 @@
 import React from "react";
 import Context from "../Context";
 import config from "../config";
+import STORE from "../STORE";
 import "./BookEdit.css";
 
 export default class BookEdit extends React.Component {
@@ -60,11 +61,11 @@ export default class BookEdit extends React.Component {
   };
 
   handleChangeDateStarted = (e) => {
-    this.setState({ book_date_started: e.target.value });
+    const date = new Date(e.target.value);
+    this.setState({ book_date_started: date });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = () => {
     const { book_id } = this.props.match.params;
 
     const updatedBook = {
@@ -102,6 +103,26 @@ export default class BookEdit extends React.Component {
     this.props.history.push("/books");
   };
 
+  makeGenresList = () => {
+    const genres = STORE.genres.map((genre) => {
+      return (
+        <option key={genre} value={genre}>
+          {genre}
+        </option>
+      );
+    });
+    return genres;
+  };
+
+  validateGenre = (e) => {
+    e.preventDefault();
+    if (this.state.book_genre === "0") {
+      alert(`Select a genre`);
+    } else {
+      this.handleSubmit();
+    }
+  };
+
   render() {
     const { book_title, book_author, book_genre, book_date_started } =
       this.state;
@@ -111,7 +132,7 @@ export default class BookEdit extends React.Component {
         <h2>
           Edit <span className="bold italic">'{book_title}'</span>
         </h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.validateGenre}>
           <label htmlFor="book-title">Title:</label>
           <input
             id="book-title"
@@ -131,13 +152,17 @@ export default class BookEdit extends React.Component {
           ></input>
           <br />
           <label htmlFor="book-genre">Genre:</label>
-          <input
+          <select
             id="book-genre"
-            type="text"
             aria-label="genre"
             defaultValue={book_genre}
             onChange={this.handleChangeGenre}
-          ></input>
+          >
+            <option key="0" value="0">
+              Select a genre...
+            </option>
+            {this.makeGenresList()}
+          </select>
           <br />
           <label htmlFor="book-date-started">Date Started:</label>
           <input

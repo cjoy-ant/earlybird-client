@@ -1,49 +1,217 @@
-.ReviewForm {
-  margin-bottom: 3rem;
-}
-
-.ReviewForm h2 {
-  font-weight: bold;
-}
+/* FORM */
 
 .ReviewForm form {
-  background: #efefef;
-  margin: 2rem;
-  padding: 2rem;
+  background: #fff2e6;
+  margin: 1rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  border-radius: 10px;
 }
 
-.bold {
-  font-weight: bold;
-}
-
-.ReviewForm #review_rating {
+.ReviewForm__header {
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.ReviewForm #book-date-finished {
-  margin-left: 0.4rem;
+.ReviewForm label {
+  width: 75px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
-.ReviewForm input,
-.ReviewForm textarea {
-  margin-top: 0.5rem;
+.ReviewForm input {
+  min-width: 95%;
+  max-width: 95%;
   margin-bottom: 1rem;
 }
 
-.ReviewForm textarea {
-  width: 300px;
-  height: 100px;
+.ReviewForm select {
+  min-width: 95%;
+  max-width: 95%;
+  margin-bottom: 1rem;
 }
 
-.ReviewForm input[type="radio"] {
-  margin-left: 2rem;
+.ReviewForm #entry-chapters,
+.ReviewForm #entry-pages {
+  min-width: 25%;
+  max-width: 25%;
+  margin-bottom: 1rem;
+}
+
+.ReviewForm #entry-pages {
+  margin-left: 25px;
+}
+
+.ReviewForm textarea {
+  min-width: 95%;
+  max-width: 95%;
+  height: 150px;
+  max-height: 200px;
+  margin-bottom: 1rem;
+}
+
+/* TEXT */
+.ReviewForm h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ReviewForm .large {
+  font-size: 22px;
+}
+
+.ReviewForm form label {
+  color: #2b1c11;
+  font-size: 16px;
+}
+
+.ReviewForm form input,
+.ReviewForm form select,
+.ReviewForm form textarea {
+  font-size: 14px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* BUTTONS */
+.ReviewForm button {
+  background-color: #f2ddc9;
+  border-radius: 10px;
+  border: 1px solid #d08c65;
+  display: inline-block;
+  cursor: pointer;
+  color: #2b1c11;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.ReviewForm button:hover {
+  background-color: #fff2e6;
 }
 
 .ReviewForm__button-container {
-  margin-top: 1rem;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .ReviewForm__button-container button {
   margin-right: 1rem;
+}
+
+.ReviewForm input[type="radio"] {
+  margin-left: 2rem;
+  min-width: 0;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* FORM */
+  .ReviewForm form {
+    background: #fff2e6;
+    margin: 2rem 4rem 2rem 4rem;
+    padding: 3rem 4rem 3rem 5rem;
+  }
+
+  .ReviewForm label {
+    width: 75px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .ReviewForm input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewForm select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewForm #entry-chapters,
+  .ReviewForm #entry-pages {
+    width: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewForm textarea {
+    width: 340px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+
+  /* TEXT */
+  .ReviewForm h2 {
+    font-size: 24px;
+  }
+
+  .ReviewForm form label {
+    font-size: 16px;
+  }
+
+  .ReviewForm form input,
+  .ReviewForm form select,
+  .ReviewForm form textarea {
+    font-size: 16px;
+  }
+
+  /* BUTTONS */
+  .ReviewForm button {
+    font-size: 11px;
+  }
+
+  .ReviewForm__button-container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .ReviewForm__button-container button {
+    margin-right: 1rem;
+  }
+  .ReviewForm input[type="radio"] {
+    margin-left: 2rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  /* FORM */
+  .ReviewForm form {
+    background: #fff2e6;
+    margin: 2rem 8rem 2rem 8rem;
+    padding: 4rem 6rem 4rem 8rem;
+  }
+
+  .ReviewForm label {
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .ReviewForm input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewForm select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+  .ReviewForm input[type="radio"] {
+    margin-left: 2rem;
+  }
 }

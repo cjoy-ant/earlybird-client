@@ -1,9 +1,16 @@
 .Home {
   height: 100vh;
-  margin-top: 2rem;
+  margin: 2rem;
   text-align: center;
 }
 
 .bold {
   font-weight: bold;
+}
+
+/* TABLET / DESKTOP */
+@media only screen and (min-width: 600px) {
+  .Home {
+    font-size: 20px;
+  }
 }

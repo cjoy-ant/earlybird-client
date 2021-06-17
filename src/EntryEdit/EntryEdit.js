@@ -1,6 +1,7 @@
 import React from "react";
 import Context from "../Context";
 import config from "../config";
+import STORE from "../STORE";
 import "./EntryEdit.css";
 
 export default class EntryEdit extends React.Component {
@@ -99,7 +100,7 @@ export default class EntryEdit extends React.Component {
     if (this.state.entry_book_id === "") {
       alert("Please select a book");
     } else {
-      this.handleSubmit();
+      this.validateCategory();
     }
   };
 
@@ -144,6 +145,25 @@ export default class EntryEdit extends React.Component {
     this.props.history.push(`/entries/${entry_id}`);
   };
 
+  makeCategoriesList = () => {
+    const categories = STORE.categories.map((category) => {
+      return (
+        <option key={category} value={category}>
+          {category}
+        </option>
+      );
+    });
+    return categories;
+  };
+
+  validateCategory = () => {
+    if (this.state.entry_category === "0") {
+      alert(`Select a category for this entry.`);
+    } else {
+      this.handleSubmit();
+    }
+  };
+
   render() {
     // const { entries } = this.context;
     // const { entry_id } = this.props.match.params;
@@ -173,6 +193,7 @@ export default class EntryEdit extends React.Component {
             type="text"
             aria-label="title"
             defaultValue={entry_title}
+            placeholder="Give your entry a title..."
             onChange={this.handleChangeTitle}
           />
           <br />
@@ -190,16 +211,19 @@ export default class EntryEdit extends React.Component {
             {this.makeBookDropDownList()}
           </select>
           <br />
-          <br />
 
           <label htmlFor="entry-category">Category:</label>
-          <input
+          <select
             id="entry-category"
-            type="text"
             aria-label="category"
             defaultValue={entry_category}
             onChange={this.handleChangeCategory}
-          />
+          >
+            <option key="0" value="0">
+              Categorize this entry...
+            </option>
+            {this.makeCategoriesList()}
+          </select>
           <br />
 
           <label htmlFor="entry-chapters">Chapters:</label>

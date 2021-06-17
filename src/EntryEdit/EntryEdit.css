@@ -1,49 +1,191 @@
-.EntryEdit {
-  margin-bottom: 3rem;
-}
-
-.EntryEdit h2 {
-  font-weight: normal;
-}
+/* FORM */
 
 .EntryEdit form {
-  background: #efefef;
-  margin: 2rem;
-  padding: 2rem;
+  background: #fff2e6;
+  margin: 1rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  border-radius: 10px;
 }
 
 .EntryEdit label {
-  display: inline-block;
-  width: 80px;
+  width: 75px;
   text-align: left;
   font-weight: bold;
   margin-right: 5px;
 }
 
-.EntryEdit #entry-title,
-.EntryEdit #entry_book_id_list,
-.EntryEdit #entry-category {
-  width: 300px;
+.EntryEdit input {
+  min-width: 95%;
+  max-width: 95%;
+  margin-bottom: 1rem;
+}
+
+.EntryEdit select {
+  min-width: 95%;
+  max-width: 95%;
   margin-bottom: 1rem;
 }
 
 .EntryEdit #entry-chapters,
 .EntryEdit #entry-pages {
-  width: 100px;
+  min-width: 25%;
+  max-width: 25%;
   margin-bottom: 1rem;
+}
+
+.EntryEdit #entry-pages {
+  margin-left: 25px;
 }
 
 .EntryEdit textarea {
-  width: 340px;
+  min-width: 95%;
+  max-width: 95%;
   height: 150px;
+  max-height: 200px;
   margin-bottom: 1rem;
 }
 
-.EntryEdit__button-container {
-  margin-top: 1rem;
+/* TEXT */
+.EntryEdit h2 {
   text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.EntryEdit form label {
+  color: #2b1c11;
+  font-size: 16px;
+}
+
+.EntryEdit form input,
+.EntryEdit form select,
+.EntryEdit form textarea {
+  font-size: 14px;
+}
+
+.EntryEdit .italic {
+  font-style: italic;
+}
+
+/* BUTTONS */
+.EntryEdit button {
+  background-color: #f2ddc9;
+  border-radius: 10px;
+  border: 1px solid #d08c65;
+  display: inline-block;
+  cursor: pointer;
+  color: #2b1c11;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.EntryEdit button:hover {
+  background-color: #fff2e6;
+}
+
+.EntryEdit__button-container {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .EntryEdit__button-container button {
   margin-right: 1rem;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* FORM */
+  .EntryEdit form {
+    background: #fff2e6;
+    margin: 2rem 4rem 2rem 4rem;
+    padding: 3rem 4rem 3rem 5rem;
+  }
+
+  .EntryEdit label {
+    width: 75px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .EntryEdit input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .EntryEdit select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  /* TEXT */
+  .EntryEdit h2 {
+    font-size: 24px;
+  }
+
+  .EntryEdit form label {
+    font-size: 18px;
+  }
+
+  .EntryEdit form input,
+  .EntryEdit form select,
+  .EntryEdit form textarea {
+    font-size: 16px;
+  }
+
+  /* BUTTONS */
+  .EntryEdit button {
+    font-size: 11px;
+  }
+
+  .EntryEdit__button-container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .EntryEdit__button-container button {
+    margin-right: 1rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  /* FORM */
+  .EntryEdit form {
+    background: #fff2e6;
+    margin: 2rem 8rem 2rem 8rem;
+    padding: 4rem 6rem 4rem 8rem;
+  }
+
+  .EntryEdit label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .EntryEdit input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .EntryEdit select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .EntryAdd #entry-pages {
+    margin-left: 0rem;
+  }
 }
