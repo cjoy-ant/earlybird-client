@@ -2,7 +2,7 @@
 
 .ReviewForm form {
   background: #fff2e6;
-  margin: 1rem;
+  margin: 1rem 1rem 2rem 1rem;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
   border-radius: 10px;
 }
@@ -117,7 +117,7 @@
   /* FORM */
   .ReviewForm form {
     background: #fff2e6;
-    margin: 2rem 4rem 2rem 4rem;
+    margin: 2rem 4rem 4rem 4rem;
     padding: 3rem 4rem 3rem 5rem;
   }
 
@@ -190,7 +190,7 @@
   /* FORM */
   .ReviewForm form {
     background: #fff2e6;
-    margin: 2rem 8rem 2rem 8rem;
+    margin: 2rem 8rem 4rem 8rem;
     padding: 4rem 6rem 4rem 8rem;
   }
 
