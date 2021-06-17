@@ -61,13 +61,14 @@
   font-size: 22px;
 }
 
-form label {
+.ReviewForm form label {
   color: #2b1c11;
   font-size: 16px;
 }
 
-form input,
-form select {
+.ReviewForm form input,
+.ReviewForm form select,
+.ReviewForm form textarea {
   font-size: 14px;
 }
 
@@ -156,12 +157,13 @@ form select {
     font-size: 24px;
   }
 
-  form label {
-    font-size: 18px;
+  .ReviewForm form label {
+    font-size: 16px;
   }
 
-  form input,
-  form select {
+  .ReviewForm form input,
+  .ReviewForm form select,
+  .ReviewForm form textarea {
     font-size: 16px;
   }
 

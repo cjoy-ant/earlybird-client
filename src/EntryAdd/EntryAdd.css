@@ -52,13 +52,14 @@
   font-size: 22px;
 }
 
-form label {
+.EntryAdd form label {
   color: #2b1c11;
   font-size: 16px;
 }
 
-form input,
-form select {
+.EntryAdd form input,
+.EntryAdd form select,
+.EntryAdd form textarea {
   font-size: 14px;
 }
 
@@ -138,12 +139,13 @@ form select {
     font-size: 24px;
   }
 
-  form label {
+  .EntryAdd form label {
     font-size: 18px;
   }
 
-  form input,
-  form select {
+  .EntryAdd form input,
+  .EntryAdd form select,
+  .EntryAdd form textarea {
     font-size: 16px;
   }
 
@@ -189,5 +191,9 @@ form select {
     min-width: 95%;
     max-width: 95%;
     margin-bottom: 1rem;
+  }
+
+  .EntryAdd #entry-pages {
+    margin-left: 0rem;
   }
 }

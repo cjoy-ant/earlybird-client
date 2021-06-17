@@ -52,17 +52,18 @@
   font-size: 22px;
 }
 
-form label {
+.EntryEdit form label {
   color: #2b1c11;
   font-size: 16px;
 }
 
-form input,
-form select {
+.EntryEdit form input,
+.EntryEdit form select,
+.EntryEdit form textarea {
   font-size: 14px;
 }
 
-.italic {
+.EntryEdit .italic {
   font-style: italic;
 }
 
@@ -130,12 +131,13 @@ form select {
     font-size: 24px;
   }
 
-  form label {
+  .EntryEdit form label {
     font-size: 18px;
   }
 
-  form input,
-  form select {
+  .EntryEdit form input,
+  .EntryEdit form select,
+  .EntryEdit form textarea {
     font-size: 16px;
   }
 
@@ -181,5 +183,9 @@ form select {
     min-width: 95%;
     max-width: 95%;
     margin-bottom: 1rem;
+  }
+
+  .EntryAdd #entry-pages {
+    margin-left: 0rem;
   }
 }
