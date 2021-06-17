@@ -15,6 +15,7 @@ export default class ReviewEdit extends React.Component {
     review_notes: "",
     review_recommend: "",
     review_date_modified: "",
+    book_title: "",
   };
 
   static contextType = Context;
@@ -46,6 +47,24 @@ export default class ReviewEdit extends React.Component {
           review_recommend: res.review_recommend,
           review_date_modified: res.review_date_modified,
         });
+
+        fetch(`${config.API_ENDPOINT}/books/${res.review_book_id}`, {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((bookRes) => {
+            if (!bookRes.ok) {
+              return bookRes.json().then((error) => Promise.reject(error));
+            }
+            return bookRes.json();
+          })
+          .then((bookRes) => {
+            this.setState({
+              book_title: bookRes.book_title,
+            });
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -147,8 +166,6 @@ export default class ReviewEdit extends React.Component {
 
   render() {
     const {
-      // review_id,
-      // review_book_id,
       review_date_finished,
       review_rating,
       review_favorite,
@@ -156,6 +173,7 @@ export default class ReviewEdit extends React.Component {
       review_takeaway,
       review_notes,
       review_recommend,
+      book_title,
     } = this.state;
 
     const recommendYes = () => {
@@ -176,7 +194,10 @@ export default class ReviewEdit extends React.Component {
 
     return (
       <div className="ReviewEdit">
-        <h2>Edit your review</h2>
+        <h2>
+          Edit your review for <br />
+          <span className="italic">'{book_title}'</span>
+        </h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="book-date-finished" className="bold">
             Date Finished:

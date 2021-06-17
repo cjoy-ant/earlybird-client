@@ -141,7 +141,7 @@ export default class ReviewForm extends React.Component {
         <div className="ReviewForm__header">
           <h2>Congratulations!!</h2>
           <h2 className="large">
-            You finished '<span className="italic">{book_title}</span>'.
+            You finished <span className="italic">'{book_title}'</span>.
           </h2>
           <h2>Write your review:</h2>
         </div>

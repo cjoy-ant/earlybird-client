@@ -167,6 +167,10 @@
     font-size: 16px;
   }
 
+  .ReviewEdit .italic {
+    font-style: italic;
+  }
+
   /* BUTTONS */
   .ReviewEdit button {
     font-size: 11px;
