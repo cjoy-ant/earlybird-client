@@ -27,7 +27,7 @@ export default class Book extends React.Component {
           <Link to={`/books/${book_id}`}>{book_title}</Link>
         </h3>
         <p>
-          by {book_author}
+          {book_author}
           <br />
           <span className="italic">{book_genre}</span>
           <br />
