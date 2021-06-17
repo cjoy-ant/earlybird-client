@@ -17,21 +17,34 @@ export default class BookEdit extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    const { books } = this.context;
     const { book_id } = this.props.match.params;
-    const findBook = (books, book_id) =>
-      books.find((book) => book.book_id === book_id);
-    const book = findBook(books, book_id);
-
-    this.setState({
-      book_id: book.book_id,
-      book_title: book.book_title,
-      book_author: book.book_author,
-      book_genre: book.book_genre,
-      book_date_started: book.book_date_started,
-      book_finished: book.book_finished,
-      book_date_modified: book.book_date_modified,
-    });
+    fetch(`${config.API_ENDPOINT}/books/${book_id}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res.json();
+      })
+      .then((res) => {
+        this.setState({
+          book_id: res.book_id,
+          book_title: res.book_title,
+          book_author: res.book_author,
+          book_genre: res.book_genre,
+          book_date_started: res.book_date_started,
+          book_finished: res.book_finished,
+          book_date_modified: res.book_date_modified,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        this.setState({ error });
+      });
   }
 
   handleChangeTitle = (e) => {
@@ -90,16 +103,13 @@ export default class BookEdit extends React.Component {
   };
 
   render() {
-    const { books } = this.context;
-    const { book_id } = this.props.match.params;
-    const findBook = (books, book_id) =>
-      books.find((book) => book.book_id === book_id);
-    const book = findBook(books, book_id);
+    const { book_title, book_author, book_genre, book_date_started } =
+      this.state;
 
     return (
       <div className="BookEdit">
         <h2>
-          Edit <span className="bold italic">'{book.book_title}'</span>
+          Edit <span className="bold italic">'{book_title}'</span>
         </h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="book-title">Title:</label>
@@ -107,7 +117,7 @@ export default class BookEdit extends React.Component {
             id="book-title"
             type="text"
             aria-label="title"
-            defaultValue={book.book_title}
+            defaultValue={book_title}
             onChange={this.handleChangeTitle}
           />
           <br />
@@ -116,7 +126,7 @@ export default class BookEdit extends React.Component {
             id="book-author"
             type="text"
             aria-label="author"
-            defaultValue={book.book_author}
+            defaultValue={book_author}
             onChange={this.handleChangeAuthor}
           ></input>
           <br />
@@ -125,7 +135,7 @@ export default class BookEdit extends React.Component {
             id="book-genre"
             type="text"
             aria-label="genre"
-            defaultValue={book.book_genre}
+            defaultValue={book_genre}
             onChange={this.handleChangeGenre}
           ></input>
           <br />
@@ -134,7 +144,7 @@ export default class BookEdit extends React.Component {
             id="book-date-started"
             type="date"
             aria-label="date"
-            defaultValue={book.book_date_started}
+            defaultValue={book_date_started.substr(0, 10)}
             onChange={this.handleChangeDateStarted}
           ></input>
           <br />

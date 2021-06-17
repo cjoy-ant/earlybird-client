@@ -213,7 +213,7 @@ export default class BookPage extends React.Component {
             book_date_modified={book_date_modified}
           />
           <div className="BookPage__button-container">
-            <Link to={`/edit-book/${book_id}`}>
+            <Link to={`/edit-book/${book_id}`} book_id={book_id}>
               <button type="button" id="BookPage__edit" aria-label="edit">
                 Edit
               </button>

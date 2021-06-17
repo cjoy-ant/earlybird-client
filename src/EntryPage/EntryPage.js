@@ -81,22 +81,34 @@ export default class EntryPage extends React.Component {
   };
 
   render() {
+    const {
+      entry_id,
+      entry_book_id,
+      entry_title,
+      entry_category,
+      entry_chapters,
+      entry_pages,
+      entry_quote,
+      entry_notes,
+      entry_date_modified,
+    } = this.state;
+
     return (
       <>
         <div className="EntryPage">
           <Entry
-            entry_id={this.state.entry_id}
-            entry_book_id={this.state.entry_book_id}
-            entry_title={this.state.entry_title}
-            entry_category={this.state.entry_category}
-            entry_chapters={this.state.entry_chapters}
-            entry_pages={this.state.entry_pages}
-            entry_quote={this.state.entry_quote}
-            entry_notes={this.state.entry_notes}
-            entry_date_modified={this.state.entry_date_modified}
+            entry_id={entry_id}
+            entry_book_id={entry_book_id}
+            entry_title={entry_title}
+            entry_category={entry_category}
+            entry_chapters={entry_chapters}
+            entry_pages={entry_pages}
+            entry_quote={entry_quote}
+            entry_notes={entry_notes}
+            entry_date_modified={entry_date_modified}
           />
           <div className="EntryPage__button-container">
-            <Link to={`/edit-entry/${this.state.entry_id}`}>
+            <Link to={`/edit-entry/${entry_id}`}>
               <button type="button" id="EntryPage__edit" aria-label="edit">
                 Edit
               </button>
