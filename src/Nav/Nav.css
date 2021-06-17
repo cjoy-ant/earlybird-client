@@ -1,27 +1,45 @@
 /* HEADER */
 header {
-  background: #efefef;
+  background: #fff2e6;
   padding: 1rem;
   text-align: center;
-  font-size: 36px;
 }
 
 header a {
-  color: #000000;
+  color: #2b1c11;
   text-decoration: none;
 }
 
 /* NAV */
 nav {
-  background: #6b6b6b;
+  background: #d08c65;
   padding: 0.5rem;
-  font-size: 0.8rem;
   text-align: center;
 }
 
 nav a {
-  color: #ffffff;
+  color: #fffcf9;
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
+  letter-spacing: 1px;
+  transition: 0.5s ease-in-out;
+}
+
+nav a:hover {
+  cursor: pointer;
+  color: #3a291d;
+}
+
+/* TEXT */
+nav {
+  font-size: 1rem;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
 }

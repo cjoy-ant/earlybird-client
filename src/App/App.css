@@ -2,15 +2,28 @@
 
 body {
   font-family: Montserrat;
+  background: #fff7f0;
+}
+
+.example::-webkit-scrollbar {
+  display: none; /* hide scrollbar, but keep functionality */
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+  transition: 0.4s ease-in-out;
 }
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: #3e5d4a;
+  transition: 0.4s ease-in-out;
 }
 
 a:hover {
   cursor: pointer;
+  color: #6c8b78;
 }
 
 button:hover {
@@ -22,7 +35,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #6b6b6b;
+  background: #d08c65;
   padding: 0.1rem;
   text-align: center;
   color: #ffffff;
@@ -34,4 +47,49 @@ input,
 textarea,
 select {
   font-family: Montserrat;
+}
+
+/* BUTTONS */
+button {
+  background-color: #fff2e6;
+  border-radius: 10px;
+  border: 1px solid #f4e0d5;
+  display: inline-block;
+  cursor: pointer;
+  color: #3e5d4a;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+button:hover {
+  background-color: #f2ddc9;
+}
+
+/* TEXT */
+header {
+  font-size: 36px;
+}
+
+h1,
+h2,
+h3,
+.bold {
+  color: #3e5d4a;
+}
+
+p {
+  color: #2b1c11;
+}
+
+/* TABLET AND DESKTOP */
+@media only screen and (min-width: 600px) {
+  button {
+    font-size: 16px;
+  }
 }

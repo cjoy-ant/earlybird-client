@@ -1,24 +1,8 @@
 .BookPage {
-  background: #efefef;
-  margin: 2rem 2rem 3rem 2rem;
-  padding: 1rem 2rem 1rem 2rem;
-  list-style: none;
-}
-
-.BookPage h3 {
-  text-align: center;
-}
-
-.Entry h3 {
-  text-align: left;
-}
-
-.Entry .italic {
-  font-style: italic;
-}
-
-.BookPage .bold {
-  font-weight: bold;
+  background: #fff2e6;
+  margin: 1rem 1rem 2rem 1rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 10px;
 }
 
 .BookPage ul {
@@ -27,16 +11,84 @@
   padding: 0;
 }
 
+.Entry p {
+  padding-bottom: 1rem;
+}
+
 .BookPage__entries {
   margin: 0;
   padding: 0;
+}
+
+/* TEXT */
+.BookPage .Book h3 {
+  text-align: center;
+  font-size: 22px;
+}
+
+.BookPage .BookPage__entries h3 {
+  text-align: center;
+  font-size: 20px;
+}
+
+.BookPage .Entry h3 {
+  text-decoration: underline;
+  text-align: center;
+  font-size: 18px;
+}
+
+.BookPage h3 {
+  text-align: center;
+  font-size: 20px;
+}
+
+.BookPage p {
+  font-size: 14px;
+}
+
+.BookPage__entries .Entry h3 {
+  text-align: left;
+}
+
+.BookPage .bold {
+  font-weight: bold;
+}
+
+.BookPage__entries .italic {
+  font-style: italic;
+}
+
+.Entry .italic {
+  font-style: italic;
+}
+
+/* BUTTONS */
+.BookPage button {
+  background-color: #f2ddc9;
+  border-radius: 10px;
+  border: 1px solid #d08c65;
+  display: inline-block;
+  cursor: pointer;
+  color: #2b1c11;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.BookPage button:hover {
+  background-color: #fff2e6;
 }
 
 .BookPage__button-container button {
   margin: 1rem 1rem 1rem 0;
 }
 
-.BookPage__button-container-move {
+/* .BookPage__button-container-move {
   margin: 1rem;
   text-align: center;
 }
@@ -54,4 +106,67 @@
 
 .button-right {
   float: right;
+} */
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .BookPage {
+    margin: 2rem 3rem 4rem 3rem;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+  }
+
+  .BookPage .Entry p {
+    padding: 0 1rem 1rem 1.25rem;
+  }
+
+  .BookPage__entries {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* TEXT */
+  .BookPage .Book h3 {
+    font-size: 26px;
+  }
+
+  .BookPage .BookPage__entries h3 {
+    font-size: 22px;
+  }
+
+  .BookPage .Entry h3 {
+    font-size: 20px;
+  }
+
+  .BookPage h3 {
+    font-size: 20px;
+  }
+
+  .BookPage p {
+    font-size: 16px;
+  }
+
+  /* BUTTONS */
+  .BookPage button {
+    font-size: 12px;
+  }
+
+  .BookPage__add-entry-button-container {
+    margin-bottom: 2rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  .BookPage {
+    margin: 3rem 4rem 4rem 4rem;
+    padding: 1rem 3rem 1rem 4rem;
+  }
+
+  .BookPage .Entry p {
+    padding: 0 1rem 1rem 2rem;
+  }
+
+  .BookPage__entries {
+    padding-bottom: 0.5rem;
+  }
 }

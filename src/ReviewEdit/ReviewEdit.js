@@ -180,7 +180,7 @@ export default class ReviewEdit extends React.Component {
             id="book-date-finished"
             type="date"
             aria-label="date"
-            defaultValue={review_date_finished}
+            defaultValue={review_date_finished.substr(0, 10)}
             onChange={this.handleChangeDateFinished}
             required
           ></input>

@@ -157,9 +157,19 @@ export default class BookPage extends React.Component {
       return <ul>{entryList}</ul>;
     } else {
       return (
-        <p className="italic">
-          Write your first entry about '{this.state.book_title}'
-        </p>
+        <>
+          <p className="italic">
+            Write your first entry about '
+            <span className="bold">{this.state.book_title}</span>'
+          </p>
+          <div className="BookPage__add-entry-button-container">
+            <Link to="/add-entry">
+              <button className="BookPage__add-entry-button">
+                Add an entry
+              </button>
+            </Link>
+          </div>
+        </>
       );
     }
   };
@@ -231,8 +241,15 @@ export default class BookPage extends React.Component {
           {this.isReview()}
           <br />
           <div className="BookPage__entries">
-            <h3>Entries</h3>
+            <h3> • ENTRIES •</h3>
             {this.findEntries()}
+          </div>
+          <div className="BookPage__add-entry-button-container">
+            <Link to="/add-entry">
+              <button className="BookPage__add-entry-button">
+                Add an entry
+              </button>
+            </Link>
           </div>
         </div>
         {/* <div className="BookPage__button-container-move">

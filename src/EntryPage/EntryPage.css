@@ -1,23 +1,64 @@
 .EntryPage {
-  background: #efefef;
-  margin: 2rem 2rem 3rem 2rem;
-  padding: 1rem 2rem 1rem 2rem;
-  list-style: none;
+  background: #fff2e6;
+  margin: 1rem 1rem 2rem 1rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  border-radius: 10px;
 }
+
+/* TEXT */
 
 .EntryPage h3 {
   text-align: center;
+  font-size: 22px;
+}
+
+.EntryPage .Entry p {
+  font-size: 14px;
+}
+
+.EntryPage .large {
+  font-size: 16px;
+}
+
+.EntryPage .small {
+  font-size: 12px;
 }
 
 .EntryPage .bold {
   font-weight: bold;
 }
 
-.EntryPage__button-container button {
-  margin: 1rem 1rem 1rem 0;
+.EntryPage .italic {
+  font-style: italic;
 }
 
-.EntryPage__button-container-move {
+/* BUTTONS */
+.EntryPage button {
+  background-color: #f2ddc9;
+  border-radius: 10px;
+  border: 1px solid #d08c65;
+  display: inline-block;
+  cursor: pointer;
+  color: #2b1c11;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.EntryPage button:hover {
+  background-color: #fff2e6;
+}
+
+.EntryPage__button-container button {
+  margin: 1rem 1rem 1rem 0rem;
+}
+
+/* .EntryPage__button-container-move {
   margin: 1rem;
   text-align: center;
 }
@@ -35,4 +76,56 @@
 
 .button-right {
   float: right;
+} */
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .EntryPage {
+    margin: 2rem 3rem 4rem 3rem;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+  }
+
+  .EntryPage .Entry p {
+    padding: 0 1rem 1rem 0em;
+  }
+
+  /* TEXT */
+
+  .EntryPage h3 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .EntryPage .Entry p {
+    font-size: 16px;
+  }
+
+  .EntryPage .large {
+    font-size: 18px;
+  }
+
+  .EntryPage .small {
+    font-size: 14px;
+  }
+
+  /* BUTTONS */
+  .EntryPage button {
+    font-size: 12px;
+  }
+
+  .EntryPage__add-entry-button-container {
+    margin-bottom: 2rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  .EntryPage {
+    margin: 3rem 4rem 4rem 4rem;
+    padding: 1rem 3rem 1.5rem 4rem;
+  }
+
+  .EntryPage .Entry p {
+    padding: 0 1rem 1rem 0rem;
+  }
 }
