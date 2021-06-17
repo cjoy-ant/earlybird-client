@@ -158,7 +158,7 @@ Review.defaultProps = {
   review_dislike: "",
   review_takeaway: "",
   review_notes: "",
-  review_recommend: "",
+  review_recommend: true,
 };
 
 Review.propTypes = {

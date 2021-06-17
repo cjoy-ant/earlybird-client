@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Entry from "../Entry/Entry";
 import Context from "../Context";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./EntryPage.css";
 
 export default class EntryPage extends React.Component {
@@ -144,3 +145,21 @@ export default class EntryPage extends React.Component {
     );
   }
 }
+
+EntryPage.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+EntryPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};
