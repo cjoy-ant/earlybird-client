@@ -31,13 +31,13 @@ export default function About() {
               book's designated page by clicking on the TITLE.
             </li>
             <li>
-              <span class="bold">ENTRIES:</span> The recent entries tabs shows
-              your list of entries you've written. Log entries whenever you
-              discover useful information, come across a quote that moved you,
-              learn new vocabulary, or whenver you feel inspired to by clicking
-              on the 'Add Entry' button at the top of the page. You will also be
-              able to see a list of entries for its corresponding book on each
-              book's designated page.
+              <span class="bold">ENTRIES:</span> This tab shows a list of
+              entries you've written. Log entries whenever you discover useful
+              information, come across a quote that moved you, learn new
+              vocabulary, or whenver you feel inspired by clicking on the 'Add
+              Entry' button at the top of the page. You will also be able to see
+              a list of entries for its corresponding book on each book's
+              designated page.
             </li>
             <li>
               <span class="bold">REVIEWS:</span> When you're done with a book,

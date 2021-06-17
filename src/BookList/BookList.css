@@ -1,29 +1,36 @@
 .BookList {
-  margin: 1rem 1rem 3rem 1rem;
-}
-
-.BookList__button-add {
-  margin-left: 2rem;
+  margin: 1rem 1rem 2rem 1rem;
 }
 
 .BookList ul {
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 
 .BookList li {
-  background: #efefef;
-  margin: 2rem;
-  padding: 1rem 2rem 1rem 2rem;
+  background: #fff2e6;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1.5rem 0.1rem 1.5rem;
+  border-radius: 10px;
 }
 
-.BookList li p {
-  padding-left: 1rem;
+/* TEXT */
+
+.BookList h2,
+.BookList h3 {
+  text-align: center;
+}
+
+.BookList h2 {
+  font-size: 22px;
 }
 
 .BookList h3 {
-  text-align: center;
+  font-size: 18px;
+}
+
+.BookList p {
+  font-size: 14px;
 }
 
 .BookList .italic {
@@ -32,4 +39,72 @@
 
 .BookList .bold {
   font-weight: bold;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .BookList {
+    margin: 1rem 1rem 4rem 1rem;
+  }
+
+  .BookList .BookList__button-add {
+    margin-left: 2rem;
+  }
+
+  .BookList li {
+    margin: 2rem;
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .BookList li p {
+    padding-left: 2rem;
+  }
+
+  /* TEXT */
+
+  .BookList h2,
+  .BookList h3 {
+    text-align: center;
+  }
+
+  .BookList h2 {
+    font-size: 24px;
+  }
+
+  .BookList h3 {
+    font-size: 20px;
+  }
+
+  .BookList p {
+    font-size: 16px;
+  }
+
+  .BookList .italic {
+    font-style: italic;
+  }
+
+  .BookList .bold {
+    font-weight: bold;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  .BookList {
+    margin: 1rem 1rem 4rem 1rem;
+  }
+
+  .BookList .BookList__button-add {
+    margin-left: 3rem;
+  }
+
+  .BookList li {
+    margin: 2rem 3rem 1rem 3rem;
+    padding: 1rem 2rem 1rem 2rem;
+  }
+
+  .BookList li p {
+    padding-left: 1rem;
+  }
 }

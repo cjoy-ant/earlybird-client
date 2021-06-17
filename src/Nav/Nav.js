@@ -12,13 +12,13 @@ export default function Nav() {
       </header>
       <nav>
         <Link to="/about" exact="true">
-          About
+          about
         </Link>
         <Link to="/books" exact="true">
-          Books
+          books
         </Link>
         <Link to="/entries" exact="true">
-          Recent Entries
+          entries
         </Link>
       </nav>
     </div>

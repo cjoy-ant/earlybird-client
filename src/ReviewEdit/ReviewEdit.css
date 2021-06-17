@@ -1,49 +1,215 @@
-.ReviewEdit {
-  margin-bottom: 3rem;
-}
-
-.ReviewEdit h2 {
-  font-weight: bold;
-}
+/* FORM */
 
 .ReviewEdit form {
-  background: #efefef;
-  margin: 2rem;
-  padding: 2rem;
+  background: #fff2e6;
+  margin: 1rem;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  border-radius: 10px;
 }
 
-.bold {
-  font-weight: bold;
-}
-
-.ReviewEdit #review_rating {
+.ReviewEdit__header {
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.ReviewEdit #book-date-finished {
-  margin-left: 0.4rem;
+.ReviewEdit label {
+  width: 75px;
+  text-align: left;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
-.ReviewEdit input,
-.ReviewEdit textarea {
-  margin-top: 0.5rem;
+.ReviewEdit input {
+  min-width: 95%;
+  max-width: 95%;
   margin-bottom: 1rem;
 }
 
-.ReviewEdit textarea {
-  width: 300px;
-  height: 100px;
+.ReviewEdit select {
+  min-width: 95%;
+  max-width: 95%;
+  margin-bottom: 1rem;
 }
 
-.ReviewEdit input[type="radio"] {
-  margin-left: 2rem;
+.ReviewEdit #entry-chapters,
+.ReviewEdit #entry-pages {
+  min-width: 25%;
+  max-width: 25%;
+  margin-bottom: 1rem;
+}
+
+.ReviewEdit #entry-pages {
+  margin-left: 25px;
+}
+
+.ReviewEdit textarea {
+  min-width: 95%;
+  max-width: 95%;
+  height: 150px;
+  max-height: 200px;
+  margin-bottom: 1rem;
+}
+
+/* TEXT */
+.ReviewEdit h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.ReviewEdit .large {
+  font-size: 22px;
+}
+
+form label {
+  color: #2b1c11;
+  font-size: 16px;
+}
+
+form input,
+form select {
+  font-size: 14px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+/* BUTTONS */
+.ReviewEdit button {
+  background-color: #f2ddc9;
+  border-radius: 10px;
+  border: 1px solid #d08c65;
+  display: inline-block;
+  cursor: pointer;
+  color: #2b1c11;
+  font-family: Montserrat;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 6px 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  word-spacing: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.ReviewEdit button:hover {
+  background-color: #fff2e6;
 }
 
 .ReviewEdit__button-container {
-  margin-top: 1rem;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .ReviewEdit__button-container button {
   margin-right: 1rem;
+}
+
+.ReviewEdit input[type="radio"] {
+  margin-left: 2rem;
+  min-width: 0;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* FORM */
+  .ReviewEdit form {
+    background: #fff2e6;
+    margin: 2rem 4rem 2rem 4rem;
+    padding: 3rem 4rem 3rem 5rem;
+  }
+
+  .ReviewEdit label {
+    width: 75px;
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .ReviewEdit input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewEdit select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewEdit #entry-chapters,
+  .ReviewEdit #entry-pages {
+    width: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewEdit textarea {
+    width: 340px;
+    height: 150px;
+    margin-bottom: 1rem;
+  }
+
+  /* TEXT */
+  .ReviewEdit h2 {
+    font-size: 24px;
+  }
+
+  form label {
+    font-size: 18px;
+  }
+
+  form input,
+  form select {
+    font-size: 16px;
+  }
+
+  /* BUTTONS */
+  .ReviewEdit button {
+    font-size: 11px;
+  }
+
+  .ReviewEdit__button-container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .ReviewEdit__button-container button {
+    margin-right: 1rem;
+  }
+  .ReviewEdit input[type="radio"] {
+    margin-left: 2rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 1080px) {
+  /* FORM */
+  .ReviewEdit form {
+    background: #fff2e6;
+    margin: 2rem 8rem 2rem 8rem;
+    padding: 4rem 6rem 4rem 8rem;
+  }
+
+  .ReviewEdit label {
+    text-align: left;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .ReviewEdit input {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+
+  .ReviewEdit select {
+    min-width: 95%;
+    max-width: 95%;
+    margin-bottom: 1rem;
+  }
+  .ReviewEdit input[type="radio"] {
+    margin-left: 2rem;
+  }
 }

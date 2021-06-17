@@ -94,8 +94,10 @@ export default class Entry extends React.Component {
           <Link to={`/entries/${entry_id}`}>{entry_title}</Link>
         </h3>
         <p>
-          <span className="large bold">{findBook()}</span> |{" "}
-          <span className="italic">{entry_category}</span>
+          <span className="large bold">
+            <Link to={`/books/${entry_book_id}`}>{findBook()}</Link>
+          </span>{" "}
+          | <span className="italic">{entry_category}</span>
           <br />
           {isChapters()}
           {isPages()}
@@ -105,7 +107,7 @@ export default class Entry extends React.Component {
           <span className="bold small">Last updated:</span>{" "}
           <span className="small">
             {/* {format(utcToZonedTime(date), "MMMM d, yyyy")} */}
-            {Date(entry_date_modified).toLocaleString()}
+            {entry_date_modified.substr(0, 10)}
           </span>
         </p>
       </div>

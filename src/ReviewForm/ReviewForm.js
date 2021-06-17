@@ -115,10 +115,21 @@ export default class ReviewForm extends React.Component {
   };
 
   render() {
+    const { books } = this.context;
+    const { book_id } = this.props.match.params;
+    const findBook = (entries, book_id) =>
+      books.find((book) => book.book_id === book_id);
+    const book = findBook(books, book_id);
+
     return (
       <div className="ReviewForm">
-        <h2 className="italics">Congrats on finishing this book!</h2>
-        <h2>Review this book:</h2>
+        <div className="ReviewForm__header">
+          <h2>Congratulations!!</h2>
+          <h2 className="large">
+            You finished '<span className="italic">{book.book_title}</span>'.
+          </h2>
+          <h2>Write your review:</h2>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="book-date-finished" className="bold">
             Date Finished:

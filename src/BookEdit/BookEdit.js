@@ -159,7 +159,7 @@ export default class BookEdit extends React.Component {
             id="book-date-started"
             type="date"
             aria-label="date"
-            defaultValue={book.book_date_started}
+            defaultValue={book.book_date_started.substr(0, 10)}
             onChange={this.handleChangeDateStarted}
           ></input>
           <br />
