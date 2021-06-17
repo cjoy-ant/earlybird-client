@@ -1,5 +1,5 @@
 .Home {
-  height: 100vh;
+  overflow: hidden;
   margin: 2rem;
   text-align: center;
 }
