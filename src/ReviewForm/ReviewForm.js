@@ -34,6 +34,7 @@ export default class ReviewForm extends React.Component {
       })
       .then((res) => {
         this.setState({
+          review_book_id: book_id,
           book_title: res.book_title,
         });
       })
@@ -94,17 +95,26 @@ export default class ReviewForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { review_book_id } = this.state;
+    const {
+      review_book_id,
+      review_rating,
+      review_favorite,
+      review_dislike,
+      review_takeaway,
+      review_notes,
+      review_recommend,
+      review_date_finished,
+    } = this.state;
 
     const newReview = {
-      review_book_id: this.state.review_book_id,
-      review_rating: this.state.review_rating,
-      review_favorite: this.state.review_favorite,
-      review_dislike: this.state.review_dislike,
-      review_takeaway: this.state.review_takeaway,
-      review_notes: this.state.review_notes,
-      review_recommend: this.state.review_recommend,
-      review_date_finished: this.state.review_date_finished,
+      review_book_id: review_book_id,
+      review_rating: review_rating,
+      review_favorite: review_favorite,
+      review_dislike: review_dislike,
+      review_takeaway: review_takeaway,
+      review_notes: review_notes,
+      review_recommend: review_recommend,
+      review_date_finished: review_date_finished,
     };
 
     fetch(`${config.API_ENDPOINT}/reviews`, {
