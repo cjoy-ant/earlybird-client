@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# EarlyBird
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About the App
 
-## Available Scripts
+EarlyBird is a book tracking and journaling app that encourages you bookworms to read actively, consume literature intentionally, and reflect diligently by taking notes and writing reviews on your current reading list.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Home Page
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Home Page](src/images/screenshots/Home.png)
 
-### `npm test`
+### About Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![About Page](src/images/screenshots/About.png)
 
-### `npm run build`
+### List of Books
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Books](src/images/screenshots/BookList.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Book Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Book Page](src/images/screenshots/BookPage.png)
 
-### `npm run eject`
+### Entry Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Entry Page](src/images/screenshots/EntryPage.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## [API Documentation](https://hidden-atoll-11404.herokuapp.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Endpoints
 
-## Learn More
+#### /api/books
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- GET: returns all of the user's books
+- POST: add a book
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### /api/books/:book_id
 
-### Code Splitting
+- PATCH: update information for a specified book
+- DELETE: delete a specified book
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### /api/entries
 
-### Analyzing the Bundle Size
+- GET: returns all of the user's entries
+- POST: add a visit
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### /api/entries/:entry_id
 
-### Making a Progressive Web App
+- PATCH: update information for a specified entry
+- DELETE: delete a specified entry
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### /api/reviews
 
-### Advanced Configuration
+- GET: returns all of the user's book reviews
+- POST: add a book review
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### /api/reviews/:review_id
 
-### Deployment
+- PATCH: update information for a specified book review
+- DELETE: delete a specified book review
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+### Technology Used:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- HTML
+- CSS
+- JavaScript
+- ReactJS
+- NodeJS
+- Express
+- PostgreSQL
+
+---
+
+### Aspiring Features:
+
+- Ability to add new categories to entries
+- Show cover photo of each book on their designated pages (fetch data from Google Books API)
+- Show a list of suggested books that are similar to reads that you enjoyed or marked that you would recommend
+- Search / filter function when viewing the list of books and entries
+- User authentication to allow the app to be used as a social platform / for book clubs
