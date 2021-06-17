@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // import { format } from "date-fns";
 // import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
+import PropTypes from "prop-types";
 import "./Entry.css";
 
 export default class Entry extends React.Component {
@@ -114,3 +115,27 @@ export default class Entry extends React.Component {
     );
   }
 }
+
+Entry.defaultProps = {
+  entry_id: "",
+  entry_book_id: "",
+  entry_title: "",
+  entry_category: "",
+  entry_chapters: "",
+  entry_pages: "",
+  entry_quote: "",
+  entry_notes: "",
+  entry_date_modified: "",
+};
+
+Entry.propTypes = {
+  entry_id: PropTypes.string.isRequired,
+  entry_book_id: PropTypes.string.isRequired,
+  entry_title: PropTypes.string.isRequired,
+  entry_category: PropTypes.string.isRequired,
+  entry_chapters: PropTypes.string.isRequired,
+  entry_pages: PropTypes.string.isRequired,
+  entry_quote: PropTypes.string.isRequired,
+  entry_notes: PropTypes.string.isRequired,
+  entry_date_modified: PropTypes.string.isRequired,
+};

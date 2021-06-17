@@ -1,6 +1,7 @@
 import React from "react";
 // import { format } from "date-fns";
 // import { utcToZonedTime } from "date-fns-tz";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default class Book extends React.Component {
@@ -42,3 +43,21 @@ export default class Book extends React.Component {
     );
   }
 }
+
+Book.defaultProps = {
+  book_id: "",
+  book_title: "",
+  book_author: "",
+  book_genre: "",
+  book_date_started: "",
+  book_finished: "",
+};
+
+Book.propTypes = {
+  book_id: PropTypes.string.isRequired,
+  book_title: PropTypes.string.isRequired,
+  book_author: PropTypes.string.isRequired,
+  book_genre: PropTypes.string.isRequired,
+  book_date_started: PropTypes.string.isRequired,
+  book_finished: PropTypes.bool.isRequired,
+};

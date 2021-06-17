@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { utcToZonedTime } from "date-fns-tz";
 import Context from "../Context";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./Review.css";
 
 export default class Review extends React.Component {
@@ -40,7 +41,6 @@ export default class Review extends React.Component {
   render() {
     const {
       review_id,
-      //review_book_id,
       review_date_finished,
       review_rating,
       review_favorite,
@@ -148,3 +148,27 @@ export default class Review extends React.Component {
     );
   }
 }
+
+Review.defaultProps = {
+  review_id: "",
+  review_book_id: "",
+  review_date_finished: "",
+  review_rating: "",
+  review_favorite: "",
+  review_dislike: "",
+  review_takeaway: "",
+  review_notes: "",
+  review_recommend: "",
+};
+
+Review.propTypes = {
+  review_id: PropTypes.string.isRequired,
+  review_book_id: PropTypes.string.isRequired,
+  review_date_finished: PropTypes.string.isRequired,
+  review_rating: PropTypes.string.isRequired,
+  review_favorite: PropTypes.string.isRequired,
+  review_dislike: PropTypes.string.isRequired,
+  review_takeaway: PropTypes.string.isRequired,
+  review_notes: PropTypes.string.isRequired,
+  review_recommend: PropTypes.bool.isRequired,
+};

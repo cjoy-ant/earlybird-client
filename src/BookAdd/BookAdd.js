@@ -2,10 +2,12 @@ import React from "react";
 import config from "../config";
 import Context from "../Context";
 import STORE from "../STORE";
+import PropTypes from "prop-types";
 import "./BookAdd.css";
 
 export default class BookAdd extends React.Component {
   state = {
+    error: null,
     book_title: "",
     book_author: "",
     book_genre: "",
@@ -149,3 +151,15 @@ export default class BookAdd extends React.Component {
     );
   }
 }
+
+BookAdd.defaultProps = {
+  history: {
+    push: () => {},
+  },
+};
+
+BookAdd.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

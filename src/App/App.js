@@ -14,6 +14,7 @@ import EntryAdd from "../EntryAdd/EntryAdd";
 import EntryEdit from "../EntryEdit/EntryEdit";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import ReviewEdit from "../ReviewEdit/ReviewEdit";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import config from "../config";
 import "./App.css";
 
@@ -154,22 +155,24 @@ class App extends Component {
 
     return (
       <Context.Provider value={value}>
-        <div className="App">
-          <Route path="/" component={Nav} />
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/books" exact component={BookList} />
-          <Route path="/books/:book_id" component={BookPage} />
-          <Route path="/add-book" component={BookAdd} />
-          <Route path="/edit-book/:book_id" component={BookEdit} />
-          <Route path="/entries" exact component={EntryList} />
-          <Route path="/entries/:entry_id" component={EntryPage} />
-          <Route path="/add-entry" component={EntryAdd} />
-          <Route path="/edit-entry/:entry_id" component={EntryEdit} />
-          <Route path="/review-book/:book_id" component={ReviewForm} />
-          <Route path="/edit-review/:review_id" component={ReviewEdit} />
-          <footer>© 2021 EarlyBird</footer>
-        </div>
+        <ErrorBoundary>
+          <div className="App">
+            <Route path="/" component={Nav} />
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/books" exact component={BookList} />
+            <Route path="/books/:book_id" component={BookPage} />
+            <Route path="/add-book" component={BookAdd} />
+            <Route path="/edit-book/:book_id" component={BookEdit} />
+            <Route path="/entries" exact component={EntryList} />
+            <Route path="/entries/:entry_id" component={EntryPage} />
+            <Route path="/add-entry" component={EntryAdd} />
+            <Route path="/edit-entry/:entry_id" component={EntryEdit} />
+            <Route path="/review-book/:book_id" component={ReviewForm} />
+            <Route path="/edit-review/:review_id" component={ReviewEdit} />
+            <footer>© 2021 EarlyBird</footer>
+          </div>
+        </ErrorBoundary>
       </Context.Provider>
     );
   }

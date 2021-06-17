@@ -1,10 +1,12 @@
 import React from "react";
 import Context from "../Context";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./ReviewForm.css";
 
 export default class ReviewForm extends React.Component {
   state = {
+    error: null,
     review_book_id: "",
     review_rating: "0",
     review_favorite: "",
@@ -267,3 +269,21 @@ export default class ReviewForm extends React.Component {
     );
   }
 }
+
+ReviewForm.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+ReviewForm.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

@@ -2,10 +2,12 @@ import React from "react";
 import Context from "../Context";
 import config from "../config";
 import STORE from "../STORE";
+import PropTypes from "prop-types";
 import "./EntryEdit.css";
 
 export default class EntryEdit extends React.Component {
   state = {
+    error: null,
     entry_id: "",
     entry_title: "",
     entry_book_id: "",
@@ -289,3 +291,21 @@ export default class EntryEdit extends React.Component {
     );
   }
 }
+
+EntryEdit.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+EntryEdit.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

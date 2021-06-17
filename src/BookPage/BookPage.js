@@ -5,10 +5,12 @@ import Entry from "../Entry/Entry";
 import Review from "../Review/Review";
 import Context from "../Context";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./BookPage.css";
 
 export default class BookPage extends React.Component {
   state = {
+    error: null,
     book_id: "",
     book_title: "",
     book_author: "",
@@ -269,3 +271,21 @@ export default class BookPage extends React.Component {
     );
   }
 }
+
+BookPage.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+BookPage.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

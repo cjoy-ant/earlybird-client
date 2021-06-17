@@ -1,10 +1,12 @@
 import React from "react";
 import Context from "../Context";
 import config from "../config";
+import PropTypes from "prop-types";
 import "./ReviewEdit.css";
 
 export default class ReviewEdit extends React.Component {
   state = {
+    error: null,
     review_id: "",
     review_book_id: "",
     review_date_finished: "",
@@ -317,3 +319,21 @@ export default class ReviewEdit extends React.Component {
     );
   }
 }
+
+ReviewEdit.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+ReviewEdit.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

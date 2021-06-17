@@ -2,10 +2,12 @@ import React from "react";
 import Context from "../Context";
 import config from "../config";
 import STORE from "../STORE";
+import PropTypes from "prop-types";
 import "./EntryAdd.css";
 
 export default class EntryAdd extends React.Component {
   state = {
+    error: null,
     entry_title: "",
     entry_book_id: "",
     entry_category: "",
@@ -219,3 +221,15 @@ export default class EntryAdd extends React.Component {
     );
   }
 }
+
+EntryAdd.defaultProps = {
+  history: {
+    push: () => {},
+  },
+};
+
+EntryAdd.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

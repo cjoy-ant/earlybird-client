@@ -2,10 +2,12 @@ import React from "react";
 import Context from "../Context";
 import config from "../config";
 import STORE from "../STORE";
+import PropTypes from "prop-types";
 import "./BookEdit.css";
 
 export default class BookEdit extends React.Component {
   state = {
+    error: null,
     book_id: "",
     book_title: "",
     book_author: "",
@@ -195,3 +197,21 @@ export default class BookEdit extends React.Component {
     );
   }
 }
+
+BookEdit.defaultProps = {
+  match: {
+    params: {},
+  },
+  history: {
+    push: () => {},
+  },
+};
+
+BookEdit.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }),
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+};

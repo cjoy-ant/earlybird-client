@@ -7,6 +7,7 @@ import "./EntryPage.css";
 
 export default class EntryPage extends React.Component {
   state = {
+    error: null,
     entry_id: "",
     entry_book_id: "",
     entry_title: "",
