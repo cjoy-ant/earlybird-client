@@ -35,11 +35,14 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #d08c65;
-  padding: 0.1rem;
+  background: #e2ac8c;
+  padding: 0.2rem;
   text-align: center;
-  color: #ffffff;
+  color: #2b1c11ff;
   font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  word-spacing: 3px;
 }
 
 /* FORMS */

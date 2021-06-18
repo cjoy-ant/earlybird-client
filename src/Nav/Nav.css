@@ -12,23 +12,23 @@ header a {
 
 /* NAV */
 nav {
-  background: #d08c65;
+  background: #e2ac8c;
   padding: 0.5rem;
   text-align: center;
 }
 
 nav a {
-  color: #fffcf9;
+  color: #2b1c11;
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
   letter-spacing: 1px;
-  transition: 0.5s ease-in-out;
 }
 
 nav a:hover {
   cursor: pointer;
-  color: #3a291d;
+  color: #2b1c11;
+  font-weight: bold;
 }
 
 /* TEXT */
